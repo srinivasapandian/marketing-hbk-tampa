@@ -14,6 +14,7 @@ import gallery4 from '../asserts/gallery4.png';
 import gallery5 from '../asserts/gallery5.png';
 import logo35 from '../asserts/35logo.png';
 import logoMain from '../asserts/house-of-biryani.png';
+import heroBanner from '../asserts/banner-4.png';
 import vector from '../asserts/Vector.png';
 
 import menu1 from '../asserts/menu1.jpg';
@@ -210,7 +211,7 @@ const Home = () => {
       <section className="relative h-[calc(100vh-72px)] lg:h-[calc(100vh-90px)] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/home.png"
+            src={heroBanner}
             alt="Hero Biryani"
             className="w-full h-full object-cover scale-105"
           />
