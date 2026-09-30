@@ -3,13 +3,13 @@ export const PRIMARY_COLOR = "#FFD700"; // Gold
 export const SECONDARY_COLOR = "#000000"; // Black
 export const ACCENT_COLOR = "#FFFFFF"; // White
 
-// Dummy details - replace once the Cherry Hill location is confirmed
+// Dummy details - replace once the Piscataway location is confirmed
 export const ORDER_URL = "https://example.com/order-online";
 
 export const CONTACT_INFO = {
   phone: "(123) 456-7890",
   email: "info@example.com",
-  address: "123 Main Street, Cherry Hill, NJ 08002",
+  address: "123 Main Street, Piscataway, NJ 08854",
   hours: "Mon-Sun: 11:30 AM - 10:30 PM"
 };
 

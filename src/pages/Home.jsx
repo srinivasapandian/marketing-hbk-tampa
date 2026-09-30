@@ -272,7 +272,7 @@ const Home = () => {
                   letterSpacing: '0',
                 }}
               >
-                Bringing the Bold Flavors of Hyderabadi Cuisine to Cherry Hill, NJ
+                Bringing the Bold Flavors of Hyderabadi Cuisine to Piscataway, NJ
               </p>
             </div>
           </motion.div>

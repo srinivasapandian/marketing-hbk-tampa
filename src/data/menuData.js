@@ -8,7 +8,7 @@ import apricotDelight from '../asserts/Apricot Delight.png';
 import menu2 from '../asserts/menu2.jpg';
 import menu3 from '../asserts/menu3.jpg';
 
-// Dummy menu data - replace with the real Cherry Hill menu
+// Dummy menu data - replace with the real Piscataway menu
 export const menuCategories = [
   {
     name: 'Appetizers',
