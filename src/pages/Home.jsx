@@ -36,13 +36,14 @@ const menuCards = [
   { name: 'Desserts', image: menu3 },
 ];
 
-const baseGalleryItems = [
+const baseGalleryItemsRaw = [
   { id: 1, image: gallery1, name: 'South Indian Thali' },
   { id: 2, image: gallery2, name: 'Chicken Tikka Kebab' },
   { id: 3, image: gallery3, name: 'Paneer Butter Masala' },
   { id: 4, image: gallery4, name: 'Mutton Biryani' },
   { id: 5, image: gallery5, name: 'Fish Fry' },
 ];
+const baseGalleryItems = [...baseGalleryItemsRaw.slice(3), ...baseGalleryItemsRaw.slice(0, 3)];
 
 // 3 copies: left-buffer | visible | right-buffer — enables seamless infinite wrap
 const galleryItems = [
