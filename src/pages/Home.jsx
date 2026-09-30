@@ -216,8 +216,8 @@ const Home = () => {
             className="w-full h-full object-cover scale-105"
           />
           {/* Background Overlays for better readability and depth */}
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black" />
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-black" />
         </div>
 
         <div className="relative z-10 w-full text-center px-6 max-w-7xl mx-auto">
