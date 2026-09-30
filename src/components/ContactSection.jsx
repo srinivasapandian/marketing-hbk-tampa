@@ -4,7 +4,7 @@ import vector from '../asserts/Vector.png';
 import { CONTACT_INFO } from '../utils/constants';
 
 const GOOGLE_MAP_EMBED_URL =
-  'https://www.google.com/maps?q=Cherry+Hill,+NJ+08002&output=embed';
+  'https://www.google.com/maps?q=North+Wales,+PA+19454&output=embed';
 
 const COUNTRY_CODES = ['+1', '+44', '+91', '+61', '+81', '+86', '+971'];
 
@@ -124,7 +124,7 @@ const ContactSection = ({ mapUrl, hideHeading = false }) => {
                 </div>
               </div>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=Cherry+Hill+NJ"
+                href="https://www.google.com/maps/search/?api=1&query=North+Wales+PA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 mt-6 rounded-full border border-[#D8AA3E] text-[#D8AA3E] px-5 py-2 font-semibold w-fit hover:bg-[#D8AA3E]/10"
