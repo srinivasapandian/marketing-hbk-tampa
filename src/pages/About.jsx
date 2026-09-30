@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Moon } from 'lucide-react';
 import { motion } from 'motion/react';
 import { ORDER_URL } from '../utils/constants';
+import heroImg from '../asserts/banner-4.png';
 
 const promises = [
   { title: 'Premium Quality', icon: '/premiuim%20quality.png', text: 'Only the finest basmati rice, hand-picked spices, and fresh ingredients make it into our kitchen.' },
@@ -29,7 +30,7 @@ const About = () => (
   <div className="bg-[#0a0908] text-white">
     {/* Hero */}
     <section className="relative border-b border-[#D8AA3E] overflow-hidden">
-      <img src="/home.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={heroImg} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-black/70" />
       <motion.div
         initial={{ opacity: 0, y: 30 }}

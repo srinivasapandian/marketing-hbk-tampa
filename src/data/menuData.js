@@ -5,7 +5,7 @@ import onionPakoda from '../asserts/onion pakoda.jpg';
 import chickenBiryani from '../asserts/Biryani 2.png';
 import butterChicken from '../asserts/Butter Chicken 1.jpg';
 import apricotDelight from '../asserts/Apricot Delight.png';
-import menu2 from '../asserts/menu2.jpg';
+import paneerButterMasala from '../asserts/paneer butter masala.png';
 import menu3 from '../asserts/menu3.jpg';
 
 // Dummy menu data - replace with the real North Wales menu
@@ -23,7 +23,7 @@ export const menuCategories = [
     items: [
       { id: 'e1', name: 'Chicken Biryani', price: '$26.99', image: chickenBiryani, description: 'Aromatic basmati rice dum-cooked with tender chicken and traditional spices.' },
       { id: 'e2', name: 'Butter Chicken', price: '$19.99', image: butterChicken, description: 'Tandoori chicken simmered in a rich, creamy tomato-butter gravy.' },
-      { id: 'e3', name: 'Paneer Butter Masala', price: '$17.99', image: menu2, description: 'Soft paneer cubes cooked in a velvety tomato and cashew gravy.' },
+      { id: 'e3', name: 'Paneer Butter Masala', price: '$17.99', image: paneerButterMasala, description: 'Soft paneer cubes cooked in a velvety tomato and cashew gravy.' },
     ],
   },
   {

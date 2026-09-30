@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Users, UtensilsCrossed, ChefHat, Star } from 'lucide-react';
 import { motion } from 'motion/react';
+import heroImg from '../asserts/banner-1.png';
 
 const offers = [
   { title: 'Wedding Catering', Icon: Users, text: 'Make your special day unforgettable. We provide full wedding catering with live biryani stations, appetizer spreads, and a dedicated service team.' },
@@ -28,7 +29,7 @@ const Catering = () => (
   <div className="bg-[#0a0908] text-white">
     {/* Hero */}
     <section className="relative border-b border-[#D8AA3E] overflow-hidden">
-      <img src="/event1.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <img src={heroImg} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-black/70" />
       <motion.div
         initial={{ opacity: 0, y: 30 }}
