@@ -3,12 +3,16 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import MenuSection from './pages/MenuSection';
+import Blog from './pages/Blog';
+import Catering from './pages/Catering';
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/menu" element={<MenuSection standalone={true} />} />
+      <Route path="/catering" element={<Catering />} />
+      <Route path="/blog" element={<Blog />} />
       <Route path="/about" element={<About />} />
       <Route path="/about-us" element={<About />} />
       <Route path="/contact" element={<Contact />} />

@@ -1,23 +1,21 @@
-const Contact = () => {
-  return (
-    <div className="pt-32 pb-20 px-6 max-w-7xl mx-auto text-center">
-      <h1 className="text-4xl font-serif text-[#FFD700] mb-8">Contact Us</h1>
-      <p className="text-white/60 mb-10">Have questions or want to make a reservation?</p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="p-8 bg-[#0D0D0D] rounded-xl border border-white/5">
-          <h3 className="font-serif mb-2">Call Us</h3>
-          <p className="text-[#FFD700]">+1 (813) 546-2460</p>
-        </div>
-        <div className="p-8 bg-[#0D0D0D] rounded-xl border border-white/5">
-          <h3 className="font-serif mb-2">Visit Us</h3>
-          <p className="text-[#FFD700]">Tampa, FL, USA</p>
-        </div>
-        <div className="p-8 bg-[#0D0D0D] rounded-xl border border-white/5">
-          <h3 className="font-serif mb-2">Email Us</h3>
-          <p className="text-[#FFD700]">info@hbktampa.com</p>
-        </div>
+import ContactSection from '../components/ContactSection';
+
+const Contact = () => (
+  <div className="bg-black text-white">
+    <section className="relative h-[300px] md:h-[436px] overflow-hidden flex items-center justify-center">
+      <img src="/home.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-black/65" />
+      <div className="relative z-10 text-center px-6 max-w-3xl">
+        <h1 className="text-5xl md:text-[72px] font-bold text-[#D8AA3E] mb-5" style={{ fontFamily: 'Constantia, serif' }}>
+          Contact Us
+        </h1>
+        <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+          Have a question or feedback? Reach out — we'd love to hear from you and help in any way we can.
+        </p>
       </div>
-    </div>
-  );
-};
+    </section>
+    <ContactSection hideHeading />
+  </div>
+);
+
 export default Contact;

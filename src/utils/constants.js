@@ -1,11 +1,35 @@
-export const SITE_NAME = "HBK TAMPA";
+export const SITE_NAME = "House of Biryanis & Kebabs";
 export const PRIMARY_COLOR = "#FFD700"; // Gold
 export const SECONDARY_COLOR = "#000000"; // Black
 export const ACCENT_COLOR = "#FFFFFF"; // White
 
+// Dummy details - replace once the Cherry Hill location is confirmed
+export const ORDER_URL = "https://example.com/order-online";
+
 export const CONTACT_INFO = {
-  phone: "(813) 388-6777",
-  email: "hbktampa.com",
-  address: "19430 Bruce B Downs Blvd, Tampa, FL 33647",
-  hours: "Mon-Sun: 11:00 AM - 10:00 PM"
+  phone: "(123) 456-7890",
+  email: "info@example.com",
+  address: "123 Main Street, Cherry Hill, NJ 08002",
+  hours: "Mon-Sun: 11:30 AM - 10:30 PM"
+};
+
+export const BUSINESS_HOURS = {
+  Store: [
+    { day: 'Monday', closed: true },
+    { day: 'Tuesday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 10:30 PM'] },
+    { day: 'Wednesday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 10:30 PM'] },
+    { day: 'Thursday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 10:30 PM'] },
+    { day: 'Friday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 11:00 PM'] },
+    { day: 'Saturday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 11:00 PM'] },
+    { day: 'Sunday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 10:30 PM'] },
+  ],
+  Online: [
+    { day: 'Monday', closed: true },
+    { day: 'Tuesday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:00 PM'] },
+    { day: 'Wednesday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:00 PM'] },
+    { day: 'Thursday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:00 PM'] },
+    { day: 'Friday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:30 PM'] },
+    { day: 'Saturday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:30 PM'] },
+    { day: 'Sunday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:00 PM'] },
+  ],
 };

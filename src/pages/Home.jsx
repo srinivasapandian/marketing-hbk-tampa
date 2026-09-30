@@ -1,11 +1,11 @@
 import { motion } from 'motion/react';
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Utensils, Award, Clock, Users, ArrowRight, ExternalLink, X } from 'lucide-react';
 import siteData from '../data/siteData.json';
 import { Button } from '../components/common/Button';
 import { Card } from '../components/common/Card';
-import ContactSection from '../components/ContactSection';
+import Faq from '../components/Faq';
 
 import gallery1 from '../asserts/gallery1.jpg';
 import gallery2 from '../asserts/gallery2.jpg';
@@ -27,6 +27,13 @@ const menuImageMap = {
   '/menu3.jpg': menu3,
   '/menu4.jpg': menu4,
 };
+
+const menuCards = [
+  { name: 'Appetizers', image: menu1 },
+  { name: 'Ethnic Entrees', image: menu2 },
+  { name: 'Beverages', image: menu4 },
+  { name: 'Desserts', image: menu3 },
+];
 
 const baseGalleryItems = [
   { id: 1, image: gallery1, name: 'South Indian Thali' },
@@ -200,7 +207,7 @@ const Home = () => {
   return (
     <div id="home" className="overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative h-screen pt-[350px] lg:pt-[300px] overflow-hidden">
+      <section className="relative h-[calc(100vh-72px)] lg:h-[calc(100vh-90px)] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="/home.png"
@@ -212,29 +219,37 @@ const Home = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black" />
         </div>
 
-        <div className="relative z-10 text-center px-6 max-w-7xl mx-auto pt-10 md:pt-16">
+        <div className="relative z-10 w-full text-center px-6 max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
             className="flex flex-col items-center"
           >
+            {/* Badges: halal | main logo | 35+ locations */}
+            <div className="flex items-center justify-center gap-6 md:gap-10 mb-3 md:mb-[2vh] flex-col-reverse md:flex-row">
+              <div className="flex items-center gap-6 md:contents">
+                <img src="/halal.png" alt="Halal" className="h-14 w-14 md:h-[11vh] md:w-[11vh] object-contain md:order-1" />
+                <img src={logo35} alt="35+ Locations" className="h-14 w-14 md:h-[11vh] md:w-[11vh] object-contain md:order-3" />
+              </div>
+              <img src={logoMain} alt="House of Biryanis" className="h-16 w-16 md:h-[17vh] md:w-[17vh] object-contain md:order-2" />
+            </div>
 
+            <p className="font-['Playfair_Display'] italic font-semibold text-[#D8AA3E] text-lg md:text-[clamp(24px,5vh,44px)] mb-1">
+              Welcome to
+            </p>
+            <h2 className="font-['Playfair_Display'] font-bold text-white text-2xl md:text-[clamp(30px,6.5vh,56px)] leading-tight mb-1">
+              House of Biryanis &amp; Kebabs
+            </h2>
             <h1
-              className="mb-6 md:mb-8 text-white leading-none text-5xl md:text-[64px]"
-              style={{
-                fontFamily: 'Constantia, serif',
-                fontWeight: 400,
-                fontStyle: 'regular',
-                lineHeight: '100%',
-                letterSpacing: '0',
-              }}
+              className="mb-4 md:mb-[2vh] text-[#D8AA3E] leading-none text-4xl md:text-[clamp(36px,7.5vh,64px)]"
+              style={{ fontFamily: 'Constantia, serif', fontWeight: 400 }}
             >
               Authentic Cuisine
             </h1>
 
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mt-2">
-              <a href="https://hbk-tampa.maghil.com/restaurant/hbk-tampa/menu/Pickup" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 rounded-full border border-[#D8AA3E] bg-black/35 px-4 md:px-5 py-2 md:py-2 font-['Playfair_Display'] text-base md:text-[16px] leading-none text-white/95 hover:bg-black/50 transition-all">
+              <a href="https://example.com/order-online" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 rounded-full border border-[#D8AA3E] bg-black/35 px-4 md:px-5 py-2 md:py-2 font-['Playfair_Display'] text-base md:text-[16px] leading-none text-white/95 hover:bg-black/50 transition-all">
                 <span>Order Online</span>
                 <span className="flex items-center justify-center rounded-full border border-[#D8AA3E] w-6 h-6 md:w-7 md:h-7">
                   <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#E1B443]" />
@@ -248,7 +263,7 @@ const Home = () => {
               />
 
               <p
-                className="max-w-3xl md:text-left text-white/95 text-2xl md:text-[36px]"
+                className="max-w-3xl md:text-left text-white/95 text-xl md:text-[clamp(22px,4vh,36px)]"
                 style={{
                   fontFamily: 'Constantia, serif',
                   fontWeight: 400,
@@ -257,7 +272,7 @@ const Home = () => {
                   letterSpacing: '0',
                 }}
               >
-                Bringing the Bold Flavors of Hyderabadi Cuisine to Tampa, USA
+                Bringing the Bold Flavors of Hyderabadi Cuisine to Cherry Hill, NJ
               </p>
             </div>
           </motion.div>
@@ -329,116 +344,31 @@ const Home = () => {
 
       {/* Menu Section */}
       <section id="menu" className="py-20 bg-black">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-8">
-            <div className="flex items-start justify-between gap-6 mb-8">
-              <div className="flex items-end gap-2">
-                <h2 className="title-with-line text-4xl md:text-6xl font-serif">Menu</h2>
-                <div className="flex-shrink-0">
-                  <img src={vector} alt="Cloche" className="w-8 h-8 object-contain" />
-                </div>
-              </div>
-
-              <button
-                onClick={() => navigate('/menu')}
-                className="group inline-flex items-center justify-center bg-transparent text-white font-serif leading-[100%] hover:bg-[#D8AA3E]/10 transition-all mt-1"
-                style={{
-                  width: '165px',
-                  height: '55px',
-                  opacity: 1,
-                  gap: '10px',
-                  borderRadius: '40px',
-                  borderWidth: '1px',
-                  borderStyle: 'solid',
-                  borderColor: '#D8AA3E',
-                  paddingTop: '16px',
-                  paddingRight: '32px',
-                  paddingBottom: '16px',
-                  paddingLeft: '32px',
-                }}
-              >
-                <span>View All</span>
-                <ArrowRight className="w-5 h-5 text-[#E1B443]" />
-              </button>
-            </div>
-
-            <div className="flex flex-wrap gap-6 md:gap-10 items-center border-b border-white/10 pb-4">
-              {siteData.categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`text-xl md:text-2xl font-serif transition-all pb-2 relative ${activeCategory === cat ? 'text-white underline decoration-[#FFD700] underline-offset-8' : 'text-white/40 hover:text-white'
-                    }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="title-with-line text-5xl md:text-6xl" style={{ fontFamily: 'Constantia, serif' }}>Menu</h2>
           </div>
-
-          <div
-            ref={menuRef}
-            onScroll={handleMenuScroll}
-            className="flex overflow-x-auto gap-6 md:gap-8 pb-4 pl-4 md:pl-8 no-scrollbar scroll-smooth"
-          >
-            {filteredMenu.map((item, index) => {
-              const isExpanded = activeMenuIndex === index;
-              return (
-                <div
-                  key={item.id}
-                  onMouseEnter={() => {
-                    if (!isMenuScrolling) {
-                      setActiveMenuIndex(index);
-                    }
-                  }}
-                  onClick={() => {
-                    setActiveMenuIndex(index);
-                    if (menuRef.current) {
-                      const container = menuRef.current;
-                      const child = container.children[index];
-                      if (child) {
-                        const scrollLeft = child.offsetLeft - container.clientWidth / 2 + child.clientWidth / 2;
-                        container.scrollTo({
-                          left: scrollLeft,
-                          behavior: 'smooth'
-                        });
-                      }
-                    }
-                  }}
-                  className={`group relative flex-shrink-0 overflow-hidden cursor-pointer shadow-2xl border border-white/20 transition-all duration-500 ease-in-out ${isExpanded
-                    ? 'w-[320px] md:w-[420px] h-[420px] md:h-[460px] rounded-[26px]'
-                    : 'w-[250px] md:w-[280px] h-[420px] md:h-[460px] rounded-[22px]'
-                    }`}
-                >
-                  <img
-                    src={menuImageMap[item.image] || item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-
-                  {/* Price Badge */}
-                  <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-black shadow-lg">
-                    ${item.price}
-                  </div>
-
-                  {/* Content Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent p-5 md:p-6 flex flex-col justify-end">
-                    <h4 className={`font-serif text-white mb-2 transition-all duration-500 ${isExpanded ? 'text-3xl' : 'text-2xl'}`}>{item.name}</h4>
-                    <p className="text-white/75 text-sm font-serif line-clamp-2 mb-4">
-                      {item.description}
-                    </p>
-                    <div className="flex items-center gap-2 text-[#FFD700] text-xs font-serif tracking-wide group-hover:gap-4 transition-all">
-                      View More <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {menuCards.map((c) => (
+              <Link
+                key={c.name}
+                to="/menu"
+                className="group relative h-[420px] md:h-[560px] rounded-[28px] overflow-hidden border border-white/10 block"
+              >
+                <img src={c.image} alt={c.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-7 text-left">
+                  <h3 className="text-white text-3xl mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>{c.name}</h3>
+                  <span className="inline-flex items-center gap-2 text-[#FFD700]" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    View More <ArrowRight size={16} />
+                  </span>
                 </div>
-              );
-            })}
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
       <section id="services" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-5 mb-14">
@@ -485,8 +415,8 @@ const Home = () => {
       {/* Gallery Section */}
       <section id="gallery" className="py-20 bg-black overflow-hidden">
         <div className="w-full">
-          <div className="flex items-end gap-4 mb-20 justify-center px-4">
-            <h2 className="title-with-line text-4xl md:text-6xl font-serif tracking-widest text-center">Gallery</h2>
+          <div className="flex items-end gap-4 mb-14 justify-center px-4">
+            <h2 className="title-with-line text-5xl md:text-7xl tracking-[0.12em] text-center" style={{ fontFamily: "'Playfair Display', serif", fontWeight: 400 }}>Gallery</h2>
             <div className="flex-shrink-0">
               <img src={vector} alt="Cloche" className="w-8 h-8 object-contain" />
             </div>
@@ -506,12 +436,12 @@ const Home = () => {
                 <div
                   key={item.uniqueId}
                   onClick={() => setGalleryPopup({ image: item.image, name: item.name })}
-                  className="group relative flex-shrink-0 cursor-pointer flex flex-col items-center gap-4 w-[200px] md:w-[250px]"
+                  className="group relative flex-shrink-0 cursor-pointer flex flex-col items-center gap-4 w-[240px] md:w-[312px]"
                 >
-                  <div className="w-full h-[260px] md:h-[310px] overflow-hidden rounded-[8px] border border-white/20 group-hover:border-[#FDC700]/60 transition-all duration-300 shadow-lg group-hover:shadow-[0_0_16px_rgba(253,199,0,0.15)]">
+                  <div className="w-full h-[300px] md:h-[386px] overflow-hidden rounded-[8px] border border-white/20 group-hover:border-[#FDC700]/60 transition-all duration-300 shadow-lg group-hover:shadow-[0_0_16px_rgba(253,199,0,0.15)]">
                     <img
                       src={item.image}
-                      className="w-full h-[120%] object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       alt={item.name}
                     />
                   </div>
@@ -562,7 +492,7 @@ const Home = () => {
       )}
 
       {/* Contact Us Section — between Gallery and Footer */}
-      <ContactSection />
+      <Faq />
     </div>
   );
 };

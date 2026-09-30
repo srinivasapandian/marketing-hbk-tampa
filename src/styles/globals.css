@@ -70,9 +70,6 @@ h4,
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
-  /* Soft vignette so cards fade at viewport edges */
-  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }
 
 .gallery-outer:active {

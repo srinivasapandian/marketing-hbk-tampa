@@ -1,243 +1,102 @@
-import { useState, useRef, useMemo, useEffect } from "react";
-import "./MenuSection.css";
-import { allCategories, menuGrouped } from "../data/menuData";
+import { useState, useRef, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, SlidersHorizontal } from 'lucide-react';
+import { menuCategories } from '../data/menuData';
+import { ORDER_URL } from '../utils/constants';
 
-const NON_VEG_KEYWORDS = [
-  "chicken", "mutton", "fish", "prawn", "shrimp", "egg", "lamb", "beef",
-  "goat", "seafood", "kheema", "keema", "shawarma", "crab", "lobster",
-];
+const serif = { fontFamily: "'Playfair Display', serif" };
 
-function isNonVegItem(item) {
-  if (item.tags?.includes("non-veg")) return true;
-  if (item.tags?.includes("veg") && !NON_VEG_KEYWORDS.some(k => item.name.toLowerCase().includes(k))) return false;
-
-  if (item.category.toUpperCase().includes("NON VEG")) return true;
-  const nameL = item.name.toLowerCase();
-  if (nameL.startsWith("veg ")) return false;
-  return NON_VEG_KEYWORDS.some((k) => nameL.includes(k));
-}
-
-function filterItems(groups, query) {
-  const q = query.trim().toLowerCase();
-  if (!q) return groups;
-  return groups
-    .map((g) => ({
-      ...g,
-      items: g.items.filter(
-        (item) =>
-          item.name.toLowerCase().includes(q) ||
-          item.description.toLowerCase().includes(q) ||
-          item.category.toLowerCase().includes(q),
-      ),
-    }))
-    .filter((g) => g.items.length > 0);
-}
-
-export default function MenuSection({ isMobile: isMobileProp, standalone = false }) {
-  const [activeCategory, setActiveCategory] = useState("ALL");
-  const [search, setSearch] = useState("");
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(isMobileProp || false);
-
-  const itemsTopRef = useRef(null);
-  const categoryRefs = useRef({});
-  const dropdownRef = useRef(null);
+export default function MenuSection({ standalone = false }) {
+  const [active, setActive] = useState(0);
+  const tabsRef = useRef(null);
 
   useEffect(() => {
-    if (isMobileProp !== undefined) {
-      setIsMobile(isMobileProp);
-    } else {
-      const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-      checkMobile();
-      window.addEventListener('resize', checkMobile);
-      return () => window.removeEventListener('resize', checkMobile);
-    }
-  }, [isMobileProp]);
-
-  useEffect(() => {
-    if (standalone) {
-      window.scrollTo(0, 0);
-    }
+    if (standalone) window.scrollTo(0, 0);
   }, [standalone]);
 
-  useEffect(() => {
-    if (!dropdownOpen) return;
-    function handleOutside(e) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setDropdownOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleOutside);
-    return () => document.removeEventListener("mousedown", handleOutside);
-  }, [dropdownOpen]);
-
-  const filteredGroups = useMemo(
-    () => filterItems(menuGrouped, search),
-    [search],
-  );
-
-  function selectCategory(cat) {
-    setActiveCategory(cat);
-    requestAnimationFrame(() => {
-      if (cat === "ALL") {
-        itemsTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-        return;
-      }
-      const el = categoryRefs.current[cat];
-      if (el) {
-        const offset = 140; // Height of sticky tabs
-        const bodyRect = document.body.getBoundingClientRect().top;
-        const elementRect = el.getBoundingClientRect().top;
-        const elementPosition = elementRect - bodyRect;
-        const offsetPosition = elementPosition - offset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth"
-        });
-      }
-    });
-  }
+  const scrollTabs = (dir) => tabsRef.current?.scrollBy({ left: dir * 240, behavior: 'smooth' });
+  const category = menuCategories[active];
 
   return (
-    <>
-      {/* Spacer to clear the absolute navbar when standalone */}
-      {standalone && <div className="menu-title-area menu-title-area-standalone" />}
-
-      {/* Mobile: original dropdown | Desktop: sticky pill tabs */}
-      {isMobile ? (
-        <div ref={dropdownRef} className="menu-dropdown-outer">
-          <div className="menu-mobile-header-inner">
-            <button
-              className="menu-dropdown-btn"
-              onClick={() => setDropdownOpen((o) => !o)}
-              aria-haspopup="listbox"
-              aria-expanded={dropdownOpen}
-            >
-              <span>{activeCategory}</span>
-              <span
-                className={`menu-dropdown-chevron${dropdownOpen ? " menu-dropdown-chevron-open" : ""}`}
-                aria-hidden="true"
-              />
-            </button>
-            <div className="menu-mobile-search">
-              <input
-                type="search"
-                className="menu-search-input"
-                placeholder="Search dishes"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
-          </div>
-          {dropdownOpen && (
-            <ul className="menu-dropdown-list" role="listbox">
-              {allCategories.map((cat) => (
-                <li
-                  key={cat}
-                  role="option"
-                  aria-selected={activeCategory === cat}
-                  className={`menu-dropdown-option${activeCategory === cat ? " menu-dropdown-option-active" : ""}`}
-                  onClick={() => {
-                    selectCategory(cat);
-                    setDropdownOpen(false);
-                  }}
-                >
-                  {cat}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      ) : (
-        <div className="menu-category-tabs">
-          <div className="menu-category-tabs-inner">
-            {allCategories.map((cat) => (
+    <section id="menu" className="bg-black text-white px-4 md:px-6 py-8 min-h-[70vh]">
+      <div className="max-w-[1280px] mx-auto">
+        {/* Category tabs */}
+        <div className="flex items-center gap-2 rounded-full border border-white/10 bg-[#161616] p-2">
+          <button
+            onClick={() => scrollTabs(-1)}
+            aria-label="Previous categories"
+            className="shrink-0 w-10 h-10 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <div ref={tabsRef} className="flex-1 flex items-center gap-2 overflow-x-auto no-scrollbar">
+            {menuCategories.map((c, i) => (
               <button
-                key={cat}
-                className={`menu-tab-item${activeCategory === cat ? " active" : ""}`}
-                onClick={() => selectCategory(cat)}
+                key={c.name}
+                onClick={() => setActive(i)}
+                className={`shrink-0 flex items-center gap-3 rounded-full px-6 py-2.5 font-bold text-[15px] transition-colors ${
+                  i === active ? 'bg-[#C9A000] text-black' : 'text-white hover:text-[#D8AA3E]'
+                }`}
+                style={serif}
               >
-                {cat}
+                {c.name}
+                <span className="rounded-full bg-white text-black text-xs font-bold px-2 py-0.5">
+                  {String(c.items.length).padStart(2, '0')}
+                </span>
               </button>
             ))}
           </div>
+          <button
+            onClick={() => scrollTabs(1)}
+            aria-label="Next categories"
+            className="shrink-0 w-10 h-10 rounded-full border border-[#D8AA3E] flex items-center justify-center text-white"
+          >
+            <ChevronRight size={18} />
+          </button>
         </div>
-      )}
 
-      {/* Main content */}
-      <section
-        id="menu"
-        className={`menu-section${standalone ? " menu-section-standalone" : ""}`}
-        style={isMobile ? { padding: "0 16px" } : undefined}
-      >
-        <div className="menu-right">
-          {!isMobile && (
-            <div className="menu-controls">
-              <input
-                type="search"
-                className="menu-search-input"
-                placeholder="Search dishes"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
-          )}
+        {/* Heading */}
+        <div className="mt-10 mb-8 flex items-end gap-6">
+          <h2 className="title-with-line uppercase tracking-wider text-3xl md:text-[40px] font-bold" style={serif}>
+            {category.name}
+          </h2>
+          <span className="pb-3 text-sm text-white/50">{category.items.length} items</span>
+        </div>
 
-          <div ref={itemsTopRef} className="menu-items-wrapper">
-            {filteredGroups.map((group) => (
-              <div
-                key={group.category}
-                className="menu-category-group"
-                ref={(el) => {
-                  if (el) categoryRefs.current[group.category] = el;
-                  else delete categoryRefs.current[group.category];
-                }}
-              >
-                <h3 className="menu-category-title">{group.category}</h3>
-                <div className="menu-items-grid">
-                  {group.items.map((item) => {
-                    const isNonVeg = isNonVegItem(item);
-                    return (
-                      <article key={item.id} className="menu-item">
-                        <div className="menu-item-top-row">
-                          <div className="menu-item-top-left">
-                            <span
-                              className={`menu-item-dot${isNonVeg ? " menu-item-dot-nonveg" : " menu-item-dot-veg"}`}
-                              aria-label={isNonVeg ? "Non-veg" : "Veg"}
-                            />
-                            <span
-                              className="menu-item-name"
-                              title={item.name}
-                              tabIndex={0}
-                            >
-                              {item.name}
-                            </span>
-                          </div>
-                          <div className="menu-item-price-col">
-                            <span className="menu-item-price">{item.price}</span>
-                            {item.familyPrice && (
-                              <span className="menu-item-family-price">
-                                Family&nbsp;{item.familyPrice}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                        <p className="menu-item-desc">{item.description}</p>
-                      </article>
-                    );
-                  })}
-                </div>
+        {/* Items */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {category.items.map((item) => (
+            <article
+              key={item.id}
+              className="relative flex flex-col rounded-[28px] border border-[#D8AA3E]/30 bg-[#0e0d0b] p-[18px]"
+            >
+              <div className="relative">
+                <img src={item.image} alt={item.name} className="w-full aspect-[4/3] object-cover rounded-2xl" />
+                <span className="absolute top-3 right-3 rounded-full bg-white text-black font-bold px-4 py-2">
+                  {item.price}
+                </span>
               </div>
-            ))}
-            {filteredGroups.length === 0 && (
-              <p className="menu-empty-state">
-                No items found for the selected filters.
-              </p>
-            )}
-          </div>
+              <h3 className="mt-5 text-xl font-bold" style={serif}>{item.name}</h3>
+              <p className="mt-5 mb-6 text-[15px] leading-relaxed text-white/70 line-clamp-2">{item.description}</p>
+              <div className="mt-auto flex items-center justify-between">
+                <button
+                  aria-label="Customize"
+                  className="w-12 h-11 rounded-xl border border-[#D8AA3E]/40 flex items-center justify-center text-white/80 hover:text-[#D8AA3E]"
+                >
+                  <SlidersHorizontal size={18} />
+                </button>
+                <a
+                  href={ORDER_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl bg-[#C9A000] text-black font-bold uppercase px-9 py-3 hover:brightness-110 transition"
+                >
+                  View
+                </a>
+              </div>
+            </article>
+          ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
