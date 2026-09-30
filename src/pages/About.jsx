@@ -39,10 +39,10 @@ const About = () => (
       >
         <p className="text-[#D8AA3E] text-sm font-bold uppercase tracking-[0.25em] mb-4">Our Story</p>
         <h1 className="text-5xl md:text-[72px] leading-[1.1] font-bold" style={{ fontFamily: 'Constantia, serif' }}>
-          House of Biryani<br /><span className="text-[#D8AA3E] font-normal">Cherry Hill</span>
+          House of Biryani<br /><span className="text-[#D8AA3E] font-normal">Malvern</span>
         </h1>
         <p className="mt-6 text-lg md:text-xl text-white/90 leading-relaxed">
-          Authentic halal South Asian cuisine, slow-cooked with love and served with pride in Cherry Hill, NJ.
+          Authentic halal South Asian cuisine, slow-cooked with love and served with pride in Malvern, PA.
         </p>
         <div className="mt-8 flex flex-wrap gap-4 justify-center">
           <Link to="/menu" className="inline-flex items-center gap-2 rounded-full bg-[#FFD700] text-black font-semibold px-8 py-3.5 hover:brightness-110 transition">
@@ -64,9 +64,9 @@ const About = () => (
       <div className="space-y-5 text-[17px] leading-8 text-white/85">
         <SectionTitle center={false}>About Us</SectionTitle>
         <h3 className="text-2xl md:text-[28px] font-bold text-white" style={{ fontFamily: 'Constantia, serif' }}>Born from a Passion for Authentic Biryani</h3>
-        <p>House of Biryani Cherry Hill started with a simple dream — to recreate the bold, fragrant flavors of South Asia right here in South Jersey. Rooted in time-honored recipes and authentic spice blends passed down through generations, every dish we serve carries that rich culinary legacy.</p>
+        <p>House of Biryani Malvern started with a simple dream — to recreate the bold, fragrant flavors of South Asia right here in Chester County. Rooted in time-honored recipes and authentic spice blends passed down through generations, every dish we serve carries that rich culinary legacy.</p>
         <p>We use the traditional <span className="text-[#FFD700] font-semibold">dum</span> method — slow-cooking each biryani in a sealed pot so the steam, spice, and aroma infuse together perfectly. Nothing is rushed. Nothing is reheated. Every plate that leaves our kitchen is made fresh, with care.</p>
-        <p>We are proud to be 100% halal certified, welcoming guests of all backgrounds to experience the warmth of South Asian hospitality right here in New Jersey.</p>
+        <p>We are proud to be 100% halal certified, welcoming guests of all backgrounds to experience the warmth of South Asian hospitality right here in Pennsylvania.</p>
         <Link to="/menu" className="inline-flex items-center gap-2 rounded-full bg-[#FFD700] text-black font-semibold px-8 py-3.5 hover:brightness-110 transition">
           View Our Menu <ArrowRight size={18} />
         </Link>

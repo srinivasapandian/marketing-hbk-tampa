@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 
-// Generic answers - update once the Cherry Hill menu is final
+// Generic answers - update once the Malvern menu is final
 const faqs = [
   {
     q: 'What appetizers do you offer at House of Biryanis & Kebabs?',
@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: 'Which areas do you serve?',
-    a: 'We proudly serve customers in Cherry Hill, Voorhees, Marlton, Haddonfield, Mount Laurel, and nearby South Jersey communities, making it easy to enjoy our authentic Hyderabadi biryani, kebabs, and Indian cuisine whether you dine in, order takeout, or place an online order.',
+    a: 'We proudly serve customers in Malvern, Paoli, Exton, Frazer, Berwyn, Phoenixville, and nearby Chester County communities, making it easy to enjoy our authentic Hyderabadi biryani, kebabs, and Indian cuisine whether you dine in, order takeout, or place an online order.',
   },
 ];
 
@@ -39,7 +39,7 @@ const Faq = () => {
             Frequently Asked Questions
           </h2>
           <p className="text-white/65 text-base leading-7 max-w-md">
-            Everything you need to know about House of Biryanis &amp; Kebabs Cherry Hill — from our halal kitchen to catering and online ordering.
+            Everything you need to know about House of Biryanis &amp; Kebabs Malvern — from our halal kitchen to catering and online ordering.
           </p>
         </div>
 
