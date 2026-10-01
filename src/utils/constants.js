@@ -6,10 +6,16 @@ export const ACCENT_COLOR = "#FFFFFF"; // White
 // Dummy details - replace once the North Wales location is confirmed
 export const ORDER_URL = "https://example.com/order-online";
 
+export const SOCIAL_LINKS = {
+  facebook: "https://www.facebook.com/hbknorthwales/",
+  instagram: "https://www.instagram.com/hbk_northwales/",
+  googleReview: "https://g.page/r/CZpYQXm8TnxrEBM/review"
+};
+
 export const CONTACT_INFO = {
-  phone: "(123) 456-7890",
+  phone: "(215) 647-3133",
   email: "info@example.com",
-  address: "123 Main Street, North Wales, PA 19454",
+  address: "111 Garden Golf Blvd, Suite C, North Wales, PA 19454",
   hours: "Mon-Sun: 11:30 AM - 10:30 PM"
 };
 

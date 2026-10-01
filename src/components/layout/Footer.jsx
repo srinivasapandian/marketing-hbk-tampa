@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Facebook, Instagram } from 'lucide-react';
+import { MapPin, Phone, Mail, Facebook, Instagram, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logoMain from '../../asserts/house-of-biryani.png';
 import footerLogo from '../../asserts/footer.png';
-import { CONTACT_INFO, BUSINESS_HOURS, ORDER_URL } from '../../utils/constants';
+import { CONTACT_INFO, SOCIAL_LINKS, BUSINESS_HOURS, ORDER_URL } from '../../utils/constants';
 
 const quickLinks = [
   { name: 'Home', path: '/' },
@@ -45,7 +45,7 @@ const Footer = () => {
             <h4 className="mt-6 text-[13px] font-bold text-[#D8AA3E] uppercase tracking-[0.2em] mb-2">Follow Us</h4>
             <div className="h-[2px] w-10 bg-[#D8AA3E] mb-4" />
             <div className="flex gap-3">
-              {[{ Icon: Facebook, label: 'Facebook' }, { Icon: Instagram, label: 'Instagram' }].map(({ Icon, label }) => (
+              {[{ Icon: Facebook, label: 'Facebook', href: SOCIAL_LINKS.facebook }, { Icon: Instagram, label: 'Instagram', href: SOCIAL_LINKS.instagram }].map(({ Icon, label, href }) => (
                 <a
                   key={label}
                   href="#"
@@ -80,6 +80,8 @@ const Footer = () => {
             <ul className="space-y-4 text-white/80">
               <li className="flex gap-3"><MapPin size={18} className="text-[#D8AA3E] mt-0.5 shrink-0" /><span>{CONTACT_INFO.address}</span></li>
               <li className="flex gap-3"><Phone size={18} className="text-[#D8AA3E] shrink-0" /><a href={`tel:${CONTACT_INFO.phone}`}>{CONTACT_INFO.phone}</a></li>
+              {CONTACT_INFO.phone2 && <li className="flex gap-3"><Phone size={18} className="text-[#D8AA3E] shrink-0" /><a href={`tel:${CONTACT_INFO.phone2}`}>{CONTACT_INFO.phone2}</a></li>}
+              <li className="flex gap-3"><Star size={18} className="text-[#D8AA3E] shrink-0" /><a href={SOCIAL_LINKS.googleReview} target="_blank" rel="noopener noreferrer">Review us on Google</a></li>
               <li className="flex gap-3"><Mail size={18} className="text-[#D8AA3E] shrink-0" /><a href={`mailto:${CONTACT_INFO.email}`}>{CONTACT_INFO.email}</a></li>
             </ul>
           </div>

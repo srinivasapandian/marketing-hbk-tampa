@@ -4,7 +4,7 @@ import vector from '../asserts/Vector.png';
 import { CONTACT_INFO } from '../utils/constants';
 
 const GOOGLE_MAP_EMBED_URL =
-  'https://www.google.com/maps?q=North+Wales,+PA+19454&output=embed';
+  'https://www.google.com/maps?q=111+Garden+Golf+Blvd,+Suite+C,+North+Wales,+PA+19454&output=embed';
 
 const COUNTRY_CODES = ['+1', '+44', '+91', '+61', '+81', '+86', '+971'];
 
@@ -120,11 +120,11 @@ const ContactSection = ({ mapUrl, hideHeading = false }) => {
                       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                     </svg>
                   </span>
-                  <p className="contact-info__text">{CONTACT_INFO.phone}</p>
+                  <p className="contact-info__text">{CONTACT_INFO.phone}{CONTACT_INFO.phone2 ? ` | ${CONTACT_INFO.phone2}` : ''}</p>
                 </div>
               </div>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=North+Wales+PA"
+                href="https://www.google.com/maps/search/?api=1&query=111+Garden+Golf+Blvd,+Suite+C,+North+Wales,+PA+19454"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 mt-6 rounded-full border border-[#D8AA3E] text-[#D8AA3E] px-5 py-2 font-semibold w-fit hover:bg-[#D8AA3E]/10"
