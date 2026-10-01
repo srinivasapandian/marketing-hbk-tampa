@@ -6,10 +6,16 @@ export const ACCENT_COLOR = "#FFFFFF"; // White
 // Dummy details - replace once the Malvern location is confirmed
 export const ORDER_URL = "https://example.com/order-online";
 
+export const SOCIAL_LINKS = {
+  facebook: "https://www.facebook.com/hbkmalvern",
+  instagram: "https://www.instagram.com/hbkmalvern",
+  googleReview: "https://g.page/r/CccgvjUT7zYTEAE/review"
+};
+
 export const CONTACT_INFO = {
-  phone: "(123) 456-7890",
+  phone: "(484) 568-4879",
   email: "info@example.com",
-  address: "123 Main Street, Malvern, PA 19355",
+  address: "309 Lancaster Ave Suite C1, Malvern, PA 19355",
   hours: "Mon-Sun: 11:30 AM - 10:30 PM"
 };
 
