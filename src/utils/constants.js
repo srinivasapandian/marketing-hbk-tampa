@@ -6,10 +6,16 @@ export const ACCENT_COLOR = "#FFFFFF"; // White
 // Dummy details - replace once the Piscataway location is confirmed
 export const ORDER_URL = "https://example.com/order-online";
 
+export const SOCIAL_LINKS = {
+  facebook: "https://www.facebook.com/hbkpiscataway",
+  instagram: "https://www.instagram.com/hbkpiscataway",
+  googleReview: "https://g.page/r/Cdy7N_FsJojoEAE/review"
+};
+
 export const CONTACT_INFO = {
-  phone: "(123) 456-7890",
+  phone: "(732) 474-0463",
   email: "info@example.com",
-  address: "123 Main Street, Piscataway, NJ 08854",
+  address: "1372 Centennial Ave, Piscataway, NJ 08854",
   hours: "Mon-Sun: 11:30 AM - 10:30 PM"
 };
 
