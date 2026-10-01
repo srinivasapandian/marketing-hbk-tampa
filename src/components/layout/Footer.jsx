@@ -48,7 +48,9 @@ const Footer = () => {
               {[{ Icon: Facebook, label: 'Facebook', href: SOCIAL_LINKS.facebook }, { Icon: Instagram, label: 'Instagram', href: SOCIAL_LINKS.instagram }].map(({ Icon, label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white/80 hover:text-[#D8AA3E] hover:border-[#D8AA3E] transition-colors"
                 >
