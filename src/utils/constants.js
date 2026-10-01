@@ -6,10 +6,17 @@ export const ACCENT_COLOR = "#FFFFFF"; // White
 // Dummy details - replace once the Cherry Hill location is confirmed
 export const ORDER_URL = "https://example.com/order-online";
 
+export const SOCIAL_LINKS = {
+  facebook: "https://www.facebook.com/hbkcherryhill",
+  instagram: "https://www.instagram.com/hbk_cherryhill",
+  googleReview: "https://g.page/r/CZWx9YzNu_wcEAE/review"
+};
+
 export const CONTACT_INFO = {
-  phone: "(123) 456-7890",
+  phone: "856-229-7160",
+  phone2: "856-229-7148",
   email: "info@example.com",
-  address: "123 Main Street, Cherry Hill, NJ 08002",
+  address: "2091 Marlton Pike East, Cherry Hill, NJ 08003",
   hours: "Mon-Sun: 11:30 AM - 10:30 PM"
 };
 
