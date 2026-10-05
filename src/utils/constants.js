@@ -14,7 +14,7 @@ export const SOCIAL_LINKS = {
 
 export const CONTACT_INFO = {
   phone: "(484) 568-4879",
-  email: "info@example.com",
+  email: "hbk19355@gmail.com",
   address: "309 Lancaster Ave Suite C1, Malvern, PA 19355",
   hours: "Mon-Sun: 11:30 AM - 10:30 PM"
 };
