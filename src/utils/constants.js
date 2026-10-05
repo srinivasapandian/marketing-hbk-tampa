@@ -19,6 +19,14 @@ export const CONTACT_INFO = {
   hours: "Mon-Sun: 11:30 AM - 10:30 PM"
 };
 
+// Contact form -> Maghil SMTP email API (POST /api/send-email-smtp).
+// The backend maps locationId + purpose to this location's recipients and email template.
+export const SMTP_API_BASE_URL = import.meta.env.VITE_SMTP_API_BASE_URL || "https://marketing.maghil.com";
+export const SMTP_LOCATION_ID = "hbk-northwales-pa";
+export const SMTP_CONTACT_PURPOSE = "HBK-NORTHWALES-CONTACT";
+// reCAPTCHA v2 site key paired with the SMTP API's secret key; the checkbox is hidden while empty.
+export const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
+
 export const BUSINESS_HOURS = {
   Store: [
     { day: 'Monday', closed: true },
