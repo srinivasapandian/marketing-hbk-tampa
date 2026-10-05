@@ -1,7 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
 import './ContactSection.css';
 import vector from '../asserts/Vector.png';
-import { CONTACT_INFO } from '../utils/constants';
+import ReCaptcha from './ReCaptcha';
+import {
+  CONTACT_INFO,
+  SMTP_API_BASE_URL,
+  SMTP_LOCATION_ID,
+  SMTP_CONTACT_PURPOSE,
+  RECAPTCHA_SITE_KEY,
+} from '../utils/constants';
 
 const GOOGLE_MAP_EMBED_URL =
   'https://www.google.com/maps?q=309+Lancaster+Ave+Suite+C1,+Malvern,+PA+19355&output=embed';
@@ -17,11 +24,13 @@ const ContactSection = ({ mapUrl, hideHeading = false }) => {
     phone: '',
     message: '',
   });
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState(null); // 'success' | 'invalid' | 'captcha' | 'failed'
   const [submitting, setSubmitting] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
   const formRef = useRef(null);
   const dropdownRef = useRef(null);
+  const recaptchaRef = useRef(null);
 
   const embedUrl = mapUrl || GOOGLE_MAP_EMBED_URL;
 
@@ -47,25 +56,47 @@ const ContactSection = ({ mapUrl, hideHeading = false }) => {
   };
 
   const validate = () => {
-    const { firstName, lastName, email, phone } = formData;
+    const { firstName, lastName, email, phone, message } = formData;
     if (!firstName.trim() || !lastName.trim()) return false;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return false;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) return false;
     if (!/^\d{7,15}$/.test(phone.replace(/\D/g, ''))) return false;
+    if (!message.trim()) return false;
     return true;
+  };
+
+  const showStatus = (next, ms) => {
+    setStatus(next);
+    setTimeout(() => setStatus(null), ms);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) {
-      setStatus('error');
-      setTimeout(() => setStatus(null), 3500);
+      showStatus('invalid', 3500);
+      return;
+    }
+    if (RECAPTCHA_SITE_KEY && !recaptchaToken) {
+      showStatus('captcha', 3500);
       return;
     }
 
+    // Sent to the Maghil SMTP API, which picks recipients and the email template from locationId + purpose
+    const payload = new FormData();
+    payload.append('locationId', SMTP_LOCATION_ID);
+    payload.append('purpose', SMTP_CONTACT_PURPOSE);
+    payload.append('firstName', formData.firstName.trim());
+    payload.append('lastName', formData.lastName.trim());
+    payload.append('email', formData.email.trim());
+    payload.append('contactNumber', `${formData.countryCode} ${formData.phone.trim()}`);
+    payload.append('message', formData.message.trim());
+    if (recaptchaToken) payload.append('recaptchaToken', recaptchaToken);
+
     setSubmitting(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1200));
-      setStatus('success');
+      const res = await fetch(`${SMTP_API_BASE_URL}/api/send-email-smtp`, { method: 'POST', body: payload });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.success) throw new Error(data.error || `HTTP ${res.status}`);
+
       setFormData({
         firstName: '',
         lastName: '',
@@ -74,11 +105,14 @@ const ContactSection = ({ mapUrl, hideHeading = false }) => {
         phone: '',
         message: '',
       });
-    } catch {
-      setStatus('error');
+      showStatus('success', 5000);
+    } catch (err) {
+      console.error('Contact form submission failed:', err);
+      showStatus('failed', 8000);
     } finally {
       setSubmitting(false);
-      setTimeout(() => setStatus(null), 4000);
+      setRecaptchaToken(null);
+      recaptchaRef.current?.reset();
     }
   };
 
@@ -186,7 +220,7 @@ const ContactSection = ({ mapUrl, hideHeading = false }) => {
                 className="contact-section__input"
                 type="email"
                 name="email"
-                placeholder="Email Address"
+                placeholder="Email Address *"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -255,21 +289,36 @@ const ContactSection = ({ mapUrl, hideHeading = false }) => {
               <textarea
                 className="contact-section__textarea"
                 name="message"
-                placeholder="Tell us how we can help you..."
+                placeholder="Tell us how we can help you... *"
                 value={formData.message}
                 onChange={handleChange}
                 rows={5}
+                required
               />
+
+              {RECAPTCHA_SITE_KEY && (
+                <ReCaptcha ref={recaptchaRef} siteKey={RECAPTCHA_SITE_KEY} onChange={setRecaptchaToken} />
+              )}
 
               {/* Status messages */}
               {status === 'success' && (
-                <div className="contact-section__message contact-section__message--success">
-                  ✓ Your message has been sent successfully!
+                <div className="contact-section__message contact-section__message--success" role="status">
+                  ✓ Thank you! Your message has been sent. We'll get back to you soon.
                 </div>
               )}
-              {status === 'error' && (
-                <div className="contact-section__message contact-section__message--error">
+              {status === 'invalid' && (
+                <div className="contact-section__message contact-section__message--error" role="alert">
                   Please fill in all required fields correctly.
+                </div>
+              )}
+              {status === 'captcha' && (
+                <div className="contact-section__message contact-section__message--error" role="alert">
+                  Please confirm you're not a robot.
+                </div>
+              )}
+              {status === 'failed' && (
+                <div className="contact-section__message contact-section__message--error" role="alert">
+                  Sorry, we couldn't send your message right now. Please call us at {CONTACT_INFO.phone}.
                 </div>
               )}
 
