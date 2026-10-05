@@ -14,7 +14,7 @@ export const SOCIAL_LINKS = {
 
 export const CONTACT_INFO = {
   phone: "(215) 647-3133",
-  email: "info@example.com",
+  email: "hbknorthwales@gmail.com",
   address: "111 Garden Golf Blvd, Suite C, North Wales, PA 19454",
   hours: "Mon-Sun: 11:30 AM - 10:30 PM"
 };
