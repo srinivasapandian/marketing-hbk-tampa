@@ -9,13 +9,69 @@ const totalItems = menuCategories.reduce((total, c) => total + countItems(c), 0)
 
 const ALL = -1;
 
+// "Samosa (3)" -> ["Samosa", "(3)"], so the qualifier can be styled like the printed menu
+const splitName = (name) => {
+  const m = name.match(/^(.*?)\s*(\([^()]*\))$/);
+  return m ? [m[1], m[2]] : [name, null];
+};
+
+function ItemName({ name }) {
+  const [base, qualifier] = splitName(name);
+  return (
+    <h3
+      className="min-w-0 text-lg md:text-xl font-bold leading-snug text-white transition-colors group-hover:text-[#D8AA3E]"
+      style={serif}
+    >
+      {base}
+      {qualifier && <span className="ml-1.5 align-middle text-xs md:text-sm font-semibold text-[#D8AA3E]/80" style={{ fontFamily: 'var(--font-sans)' }}>{qualifier}</span>}
+    </h3>
+  );
+}
+
+const Leader = ({ className = '' }) => (
+  <span aria-hidden="true" className={`min-w-6 flex-1 border-b border-dotted border-white/25 ${className}`} />
+);
+
+function MenuRow({ item }) {
+  return (
+    <article className="group border-b border-white/10 py-5">
+      <div className="flex items-baseline gap-3">
+        <ItemName name={item.name} />
+        <Leader />
+        <span className="max-w-[45%] shrink-0 text-right text-base md:text-lg font-bold text-[#D8AA3E]" style={serif}>{item.price}</span>
+      </div>
+      <p className="mt-1.5 max-w-[85%] text-sm leading-relaxed text-white/55">{item.description}</p>
+    </article>
+  );
+}
+
+function FamilyMenuRow({ item, labels }) {
+  return (
+    <article className="group border-b border-white/10 py-5">
+      <div className="flex items-baseline gap-3">
+        <ItemName name={item.name} />
+        <Leader className="hidden sm:block" />
+        <span className="hidden sm:block w-28 shrink-0 text-right text-base font-bold text-[#D8AA3E]" style={serif}>{item.price}</span>
+        <span className="hidden sm:block w-28 shrink-0 text-right text-base font-bold text-white/80" style={serif}>
+          {item.familyPrice ?? '—'}
+        </span>
+      </div>
+      <p className="mt-1.5 max-w-[85%] text-sm leading-relaxed text-white/55">{item.description}</p>
+      <div className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm sm:hidden">
+        <span className="text-white/50">{labels[0]} <b className="text-[#D8AA3E]">{item.price}</b></span>
+        {item.familyPrice && <span className="text-white/50">{labels[1]} <b className="text-white/80">{item.familyPrice}</b></span>}
+      </div>
+    </article>
+  );
+}
+
 function CategoryBlock({ category }) {
-  const [regularLabel, familyLabel] = category.priceLabels ?? ['Regular', 'Family Pack'];
+  const labels = category.priceLabels;
 
   return (
     <div>
       {/* Heading */}
-      <div className="mt-10 mb-8">
+      <div className="mt-10 mb-6">
         <div className="flex items-end gap-6">
           <h2 className="title-with-line uppercase tracking-wider text-3xl md:text-[40px] font-bold" style={serif}>
             {category.name}
@@ -31,35 +87,39 @@ function CategoryBlock({ category }) {
       {category.sections.map((section, si) => (
         <div key={section.name ?? si} className="mb-10 last:mb-0">
           {section.name && (
-            <h3 className="mb-5 inline-block rounded-full border border-[#D8AA3E] px-5 py-1.5 text-sm font-bold uppercase tracking-wider text-[#D8AA3E]">
-              {section.name}
-            </h3>
+            <div className="mt-8 mb-1 flex items-center gap-4">
+              <h3 className="text-sm font-bold uppercase tracking-[0.25em] text-[#D8AA3E]">{section.name}</h3>
+              <span aria-hidden="true" className="h-px flex-1 bg-gradient-to-r from-[#D8AA3E]/50 to-transparent" />
+            </div>
           )}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {section.items.map((item) => (
-              <article
-                key={item.id}
-                className="relative flex flex-col rounded-[28px] border border-[#D8AA3E]/30 bg-[#0e0d0b] p-[18px]"
-              >
-                <h3 className="text-xl font-bold" style={serif}>{item.name}</h3>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {item.familyPrice ? (
-                    <>
-                      <span className="rounded-full bg-white text-black text-sm font-bold px-3 py-1">
-                        {regularLabel} {item.price}
-                      </span>
-                      <span className="rounded-full border border-[#D8AA3E]/60 text-[#D8AA3E] text-sm font-bold px-3 py-1">
-                        {familyLabel} {item.familyPrice}
-                      </span>
-                    </>
-                  ) : (
-                    <span className="rounded-full bg-white text-black font-bold px-4 py-1">{item.price}</span>
-                  )}
-                </div>
-                <p className="mt-4 text-[15px] leading-relaxed text-white/70 line-clamp-3">{item.description}</p>
-              </article>
-            ))}
-          </div>
+          {labels ? (
+            // Split into two halves so each column gets its own price header
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-14">
+              {[0, 1].map((half) => {
+                const mid = Math.ceil(section.items.length / 2);
+                const items = half === 0 ? section.items.slice(0, mid) : section.items.slice(mid);
+                return (
+                  <div key={half}>
+                    <div
+                      className={`${half === 0 ? 'hidden sm:flex' : 'hidden lg:flex'} justify-end gap-3 border-b border-[#D8AA3E]/30 pb-2 text-xs font-bold uppercase tracking-widest text-white/50`}
+                    >
+                      <span className="w-28 text-right">{labels[0]}</span>
+                      <span className="w-28 text-right">{labels[1]}</span>
+                    </div>
+                    {items.map((item) => (
+                      <FamilyMenuRow key={item.id} item={item} labels={labels} />
+                    ))}
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-14">
+              {section.items.map((item) => (
+                <MenuRow key={item.id} item={item} />
+              ))}
+            </div>
+          )}
         </div>
       ))}
     </div>
