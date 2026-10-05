@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, SlidersHorizontal } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { menuCategories } from '../data/menuData';
-import { ORDER_URL } from '../utils/constants';
 
 const serif = { fontFamily: "'Playfair Display', serif" };
 
@@ -100,23 +99,7 @@ export default function MenuSection({ standalone = false }) {
                       <span className="rounded-full bg-white text-black font-bold px-4 py-1">{item.price}</span>
                     )}
                   </div>
-                  <p className="mt-4 mb-6 text-[15px] leading-relaxed text-white/70 line-clamp-3">{item.description}</p>
-                  <div className="mt-auto flex items-center justify-between">
-                    <button
-                      aria-label="Customize"
-                      className="w-12 h-11 rounded-xl border border-[#D8AA3E]/40 flex items-center justify-center text-white/80 hover:text-[#D8AA3E]"
-                    >
-                      <SlidersHorizontal size={18} />
-                    </button>
-                    <a
-                      href={ORDER_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rounded-2xl bg-[#C9A000] text-black font-bold uppercase px-9 py-3 hover:brightness-110 transition"
-                    >
-                      View
-                    </a>
-                  </div>
+                  <p className="mt-4 text-[15px] leading-relaxed text-white/70 line-clamp-3">{item.description}</p>
                 </article>
               ))}
             </div>
