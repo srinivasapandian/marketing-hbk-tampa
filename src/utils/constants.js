@@ -15,7 +15,7 @@ export const SOCIAL_LINKS = {
 export const CONTACT_INFO = {
   phone: "856-229-7160",
   phone2: "856-229-7148",
-  email: "info@example.com",
+  email: "hbk08003@gmail.com",
   address: "2091 Marlton Pike East, Cherry Hill, NJ 08003",
   hours: "Mon-Sun: 11:30 AM - 10:30 PM"
 };
