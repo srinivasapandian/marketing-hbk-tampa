@@ -14,7 +14,7 @@ export const SOCIAL_LINKS = {
 
 export const CONTACT_INFO = {
   phone: "(732) 474-0463",
-  email: "info@example.com",
+  email: "hbk08854@gmail.com",
   address: "1372 Centennial Ave, Piscataway, NJ 08854",
   hours: "Mon-Sun: 11:30 AM - 10:30 PM"
 };
