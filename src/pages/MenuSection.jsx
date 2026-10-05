@@ -5,9 +5,69 @@ import { menuCategories } from '../data/menuData';
 const serif = { fontFamily: "'Playfair Display', serif" };
 
 const countItems = (category) => category.sections.reduce((total, s) => total + s.items.length, 0);
+const totalItems = menuCategories.reduce((total, c) => total + countItems(c), 0);
+
+const ALL = -1;
+
+function CategoryBlock({ category }) {
+  const [regularLabel, familyLabel] = category.priceLabels ?? ['Regular', 'Family Pack'];
+
+  return (
+    <div>
+      {/* Heading */}
+      <div className="mt-10 mb-8">
+        <div className="flex items-end gap-6">
+          <h2 className="title-with-line uppercase tracking-wider text-3xl md:text-[40px] font-bold" style={serif}>
+            {category.name}
+          </h2>
+          <span className="pb-3 text-sm text-white/50">{countItems(category)} items</span>
+        </div>
+        {category.notes?.map((note) => (
+          <p key={note} className="mt-3 max-w-3xl text-sm leading-relaxed text-[#D8AA3E]">{note}</p>
+        ))}
+      </div>
+
+      {/* Sections */}
+      {category.sections.map((section, si) => (
+        <div key={section.name ?? si} className="mb-10 last:mb-0">
+          {section.name && (
+            <h3 className="mb-5 inline-block rounded-full border border-[#D8AA3E] px-5 py-1.5 text-sm font-bold uppercase tracking-wider text-[#D8AA3E]">
+              {section.name}
+            </h3>
+          )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {section.items.map((item) => (
+              <article
+                key={item.id}
+                className="relative flex flex-col rounded-[28px] border border-[#D8AA3E]/30 bg-[#0e0d0b] p-[18px]"
+              >
+                <h3 className="text-xl font-bold" style={serif}>{item.name}</h3>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {item.familyPrice ? (
+                    <>
+                      <span className="rounded-full bg-white text-black text-sm font-bold px-3 py-1">
+                        {regularLabel} {item.price}
+                      </span>
+                      <span className="rounded-full border border-[#D8AA3E]/60 text-[#D8AA3E] text-sm font-bold px-3 py-1">
+                        {familyLabel} {item.familyPrice}
+                      </span>
+                    </>
+                  ) : (
+                    <span className="rounded-full bg-white text-black font-bold px-4 py-1">{item.price}</span>
+                  )}
+                </div>
+                <p className="mt-4 text-[15px] leading-relaxed text-white/70 line-clamp-3">{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function MenuSection({ standalone = false }) {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(ALL);
   const tabsRef = useRef(null);
 
   useEffect(() => {
@@ -15,9 +75,10 @@ export default function MenuSection({ standalone = false }) {
   }, [standalone]);
 
   const scrollTabs = (dir) => tabsRef.current?.scrollBy({ left: dir * 240, behavior: 'smooth' });
-  const category = menuCategories[active];
-  const itemCount = countItems(category);
-  const [regularLabel, familyLabel] = category.priceLabels ?? ['Regular', 'Family Pack'];
+  const tabs = [{ index: ALL, name: 'All', count: totalItems }].concat(
+    menuCategories.map((c, i) => ({ index: i, name: c.name, count: countItems(c) }))
+  );
+  const shown = active === ALL ? menuCategories : [menuCategories[active]];
 
   return (
     <section id="menu" className="bg-black text-white px-4 md:px-6 py-8 min-h-[70vh]">
@@ -32,18 +93,18 @@ export default function MenuSection({ standalone = false }) {
             <ChevronLeft size={18} />
           </button>
           <div ref={tabsRef} className="flex-1 flex items-center gap-2 overflow-x-auto no-scrollbar">
-            {menuCategories.map((c, i) => (
+            {tabs.map((t) => (
               <button
-                key={c.name}
-                onClick={() => setActive(i)}
+                key={t.name}
+                onClick={() => setActive(t.index)}
                 className={`shrink-0 flex items-center gap-3 rounded-full px-6 py-2.5 font-bold text-[15px] transition-colors ${
-                  i === active ? 'bg-[#C9A000] text-black' : 'text-white hover:text-[#D8AA3E]'
+                  t.index === active ? 'bg-[#C9A000] text-black' : 'text-white hover:text-[#D8AA3E]'
                 }`}
                 style={serif}
               >
-                {c.name}
+                {t.name}
                 <span className="rounded-full bg-white text-black text-xs font-bold px-2 py-0.5">
-                  {String(countItems(c)).padStart(2, '0')}
+                  {String(t.count).padStart(2, '0')}
                 </span>
               </button>
             ))}
@@ -57,54 +118,11 @@ export default function MenuSection({ standalone = false }) {
           </button>
         </div>
 
-        {/* Heading */}
-        <div className="mt-10 mb-8">
-          <div className="flex items-end gap-6">
-            <h2 className="title-with-line uppercase tracking-wider text-3xl md:text-[40px] font-bold" style={serif}>
-              {category.name}
-            </h2>
-            <span className="pb-3 text-sm text-white/50">{itemCount} items</span>
-          </div>
-          {category.notes?.map((note) => (
-            <p key={note} className="mt-3 max-w-3xl text-sm leading-relaxed text-[#D8AA3E]">{note}</p>
+        <div className="space-y-16">
+          {shown.map((category) => (
+            <CategoryBlock key={category.name} category={category} />
           ))}
         </div>
-
-        {/* Sections */}
-        {category.sections.map((section, si) => (
-          <div key={section.name ?? si} className="mb-10 last:mb-0">
-            {section.name && (
-              <h3 className="mb-5 inline-block rounded-full border border-[#D8AA3E] px-5 py-1.5 text-sm font-bold uppercase tracking-wider text-[#D8AA3E]">
-                {section.name}
-              </h3>
-            )}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {section.items.map((item) => (
-                <article
-                  key={item.id}
-                  className="relative flex flex-col rounded-[28px] border border-[#D8AA3E]/30 bg-[#0e0d0b] p-[18px]"
-                >
-                  <h3 className="text-xl font-bold" style={serif}>{item.name}</h3>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {item.familyPrice ? (
-                      <>
-                        <span className="rounded-full bg-white text-black text-sm font-bold px-3 py-1">
-                          {regularLabel} {item.price}
-                        </span>
-                        <span className="rounded-full border border-[#D8AA3E]/60 text-[#D8AA3E] text-sm font-bold px-3 py-1">
-                          {familyLabel} {item.familyPrice}
-                        </span>
-                      </>
-                    ) : (
-                      <span className="rounded-full bg-white text-black font-bold px-4 py-1">{item.price}</span>
-                    )}
-                  </div>
-                  <p className="mt-4 text-[15px] leading-relaxed text-white/70 line-clamp-3">{item.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        ))}
       </div>
     </section>
   );
