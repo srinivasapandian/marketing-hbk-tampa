@@ -5,6 +5,8 @@ import { ORDER_URL } from '../utils/constants';
 
 const serif = { fontFamily: "'Playfair Display', serif" };
 
+const countItems = (category) => category.sections.reduce((total, s) => total + s.items.length, 0);
+
 export default function MenuSection({ standalone = false }) {
   const [active, setActive] = useState(0);
   const tabsRef = useRef(null);
@@ -15,6 +17,8 @@ export default function MenuSection({ standalone = false }) {
 
   const scrollTabs = (dir) => tabsRef.current?.scrollBy({ left: dir * 240, behavior: 'smooth' });
   const category = menuCategories[active];
+  const itemCount = countItems(category);
+  const [regularLabel, familyLabel] = category.priceLabels ?? ['Regular', 'Family Pack'];
 
   return (
     <section id="menu" className="bg-black text-white px-4 md:px-6 py-8 min-h-[70vh]">
@@ -40,7 +44,7 @@ export default function MenuSection({ standalone = false }) {
               >
                 {c.name}
                 <span className="rounded-full bg-white text-black text-xs font-bold px-2 py-0.5">
-                  {String(c.items.length).padStart(2, '0')}
+                  {String(countItems(c)).padStart(2, '0')}
                 </span>
               </button>
             ))}
@@ -55,47 +59,69 @@ export default function MenuSection({ standalone = false }) {
         </div>
 
         {/* Heading */}
-        <div className="mt-10 mb-8 flex items-end gap-6">
-          <h2 className="title-with-line uppercase tracking-wider text-3xl md:text-[40px] font-bold" style={serif}>
-            {category.name}
-          </h2>
-          <span className="pb-3 text-sm text-white/50">{category.items.length} items</span>
-        </div>
-
-        {/* Items */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {category.items.map((item) => (
-            <article
-              key={item.id}
-              className="relative flex flex-col rounded-[28px] border border-[#D8AA3E]/30 bg-[#0e0d0b] p-[18px]"
-            >
-              <div className="relative">
-                <img src={item.image} alt={item.name} className="w-full aspect-[4/3] object-cover rounded-2xl" />
-                <span className="absolute top-3 right-3 rounded-full bg-white text-black font-bold px-4 py-2">
-                  {item.price}
-                </span>
-              </div>
-              <h3 className="mt-5 text-xl font-bold" style={serif}>{item.name}</h3>
-              <p className="mt-5 mb-6 text-[15px] leading-relaxed text-white/70 line-clamp-2">{item.description}</p>
-              <div className="mt-auto flex items-center justify-between">
-                <button
-                  aria-label="Customize"
-                  className="w-12 h-11 rounded-xl border border-[#D8AA3E]/40 flex items-center justify-center text-white/80 hover:text-[#D8AA3E]"
-                >
-                  <SlidersHorizontal size={18} />
-                </button>
-                <a
-                  href={ORDER_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-2xl bg-[#C9A000] text-black font-bold uppercase px-9 py-3 hover:brightness-110 transition"
-                >
-                  View
-                </a>
-              </div>
-            </article>
+        <div className="mt-10 mb-8">
+          <div className="flex items-end gap-6">
+            <h2 className="title-with-line uppercase tracking-wider text-3xl md:text-[40px] font-bold" style={serif}>
+              {category.name}
+            </h2>
+            <span className="pb-3 text-sm text-white/50">{itemCount} items</span>
+          </div>
+          {category.notes?.map((note) => (
+            <p key={note} className="mt-3 max-w-3xl text-sm leading-relaxed text-[#D8AA3E]">{note}</p>
           ))}
         </div>
+
+        {/* Sections */}
+        {category.sections.map((section, si) => (
+          <div key={section.name ?? si} className="mb-10 last:mb-0">
+            {section.name && (
+              <h3 className="mb-5 inline-block rounded-full border border-[#D8AA3E] px-5 py-1.5 text-sm font-bold uppercase tracking-wider text-[#D8AA3E]">
+                {section.name}
+              </h3>
+            )}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {section.items.map((item) => (
+                <article
+                  key={item.id}
+                  className="relative flex flex-col rounded-[28px] border border-[#D8AA3E]/30 bg-[#0e0d0b] p-[18px]"
+                >
+                  <h3 className="text-xl font-bold" style={serif}>{item.name}</h3>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {item.familyPrice ? (
+                      <>
+                        <span className="rounded-full bg-white text-black text-sm font-bold px-3 py-1">
+                          {regularLabel} {item.price}
+                        </span>
+                        <span className="rounded-full border border-[#D8AA3E]/60 text-[#D8AA3E] text-sm font-bold px-3 py-1">
+                          {familyLabel} {item.familyPrice}
+                        </span>
+                      </>
+                    ) : (
+                      <span className="rounded-full bg-white text-black font-bold px-4 py-1">{item.price}</span>
+                    )}
+                  </div>
+                  <p className="mt-4 mb-6 text-[15px] leading-relaxed text-white/70 line-clamp-3">{item.description}</p>
+                  <div className="mt-auto flex items-center justify-between">
+                    <button
+                      aria-label="Customize"
+                      className="w-12 h-11 rounded-xl border border-[#D8AA3E]/40 flex items-center justify-center text-white/80 hover:text-[#D8AA3E]"
+                    >
+                      <SlidersHorizontal size={18} />
+                    </button>
+                    <a
+                      href={ORDER_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-2xl bg-[#C9A000] text-black font-bold uppercase px-9 py-3 hover:brightness-110 transition"
+                    >
+                      View
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

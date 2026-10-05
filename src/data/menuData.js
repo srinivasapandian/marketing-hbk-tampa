@@ -1,37 +1,451 @@
-import rasmalai from '../asserts/rasamalai.png';
-import fishFinger from '../asserts/fish finger.jpg';
-import chicken65 from '../asserts/chicken 65.png';
-import onionPakoda from '../asserts/onion pakoda.jpg';
-import chickenBiryani from '../asserts/Biryani 2.png';
-import butterChicken from '../asserts/Butter Chicken 1.jpg';
-import apricotDelight from '../asserts/Apricot Delight.png';
-import paneerButterMasala from '../asserts/paneer butter masala.png';
-import menu3 from '../asserts/menu3.jpg';
-
-// Dummy menu data - replace with the real Cherry Hill menu
+// Menu for HBK Cherry Hill, NJ, taken from the location's printed take-out menu.
+// Item photos are not added yet.
 export const menuCategories = [
   {
+    name: 'Soups',
+    sections: [
+      {
+        items: [
+          { id: 'soups-1', name: 'Hot & Sour Soup (Veg/Chicken)', price: '$5.99 / $6.99', description: 'Spicy, tangy Indo-Chinese broth with vegetables, finished with pepper and vinegar.' },
+          { id: 'soups-2', name: 'Sweet Corn Soup', price: '$5.99', description: 'Comforting soup of sweet corn kernels in a lightly seasoned, silky broth.' },
+          { id: 'soups-3', name: 'Natukodi Soup', price: '$8.99', description: 'Rustic country chicken broth slow-simmered with pepper, garlic and Andhra spices.' },
+          { id: 'soups-4', name: 'Goat Paya Soup', price: '$9.99', description: 'Traditional slow-cooked goat trotter soup, rich with ginger, garlic and warming spices.' },
+        ],
+      },
+    ],
+  },
+  {
     name: 'Appetizers',
-    items: [
-      { id: 'a1', name: 'Fish Finger', price: '$15.99', image: fishFinger, description: 'Crispy fried fish strips served with a tangy dip.' },
-      { id: 'a2', name: 'Chicken 65', price: '$12.99', image: chicken65, description: 'Spicy deep-fried chicken tossed with curry leaves and green chilies.' },
-      { id: 'a3', name: 'Onion Pakoda', price: '$7.99', image: onionPakoda, description: 'Crispy onion fritters seasoned with chilies, herbs and Indian spices.' },
+    sections: [
+      {
+        name: 'Vegetarian',
+        items: [
+          { id: 'appetizers-1', name: 'Samosa (2 pcs)', price: '$4.99', description: 'Flaky pastry stuffed with spiced potatoes and peas, fried golden and served with chutney.' },
+          { id: 'appetizers-2', name: 'Onion Pakora/Spinach Pakora', price: '$9.99', description: 'Crispy onion or spinach fritters in a lightly spiced gram flour batter.' },
+          { id: 'appetizers-3', name: 'Cut Mirchi Pakoda', price: '$11.99', description: 'Stuffed green chilli fritters, fried, cut and fried again, topped with onions and lemon.' },
+          { id: 'appetizers-4', name: 'Samosa Chat', price: '$11.99', description: 'Crushed samosas topped with chickpea curry, yogurt, tamarind and mint chutneys.' },
+          { id: 'appetizers-5', name: 'Vegetable Manchurian', price: '$12.99', description: 'Fried mixed-vegetable dumplings tossed in a tangy Indo-Chinese Manchurian sauce.' },
+          { id: 'appetizers-6', name: 'Gobi Majestic', price: '$12.99', description: 'Cauliflower strips fried and tossed in a yogurt, green chilli and curry leaf seasoning.' },
+          { id: 'appetizers-7', name: 'Gobi Manchuria', price: '$12.99', description: 'Crispy cauliflower tossed in a tangy Indo-Chinese sauce with garlic and spring onions.' },
+          { id: 'appetizers-8', name: 'Gobi 65', price: '$12.99', description: 'Cauliflower florets marinated in a fiery spice blend and deep-fried with curry leaves.' },
+          { id: 'appetizers-9', name: 'Chilli Gobi', price: '$12.99', description: 'Fried cauliflower tossed with green chillies, onions and peppers in a spicy soy glaze.' },
+          { id: 'appetizers-10', name: 'Paneer Pakora', price: '$13.99', description: 'Soft paneer slices dipped in spiced gram flour batter and fried until golden.' },
+          { id: 'appetizers-11', name: 'Paneer Manchurian', price: '$14.99', description: 'Fried paneer cubes tossed in a tangy Indo-Chinese sauce with garlic and spring onions.' },
+          { id: 'appetizers-12', name: 'Hyderabadi Paneer 65', price: '$10.99', description: 'Paneer marinated in Hyderabadi spices, fried and tossed with curry leaves and chillies.' },
+          { id: 'appetizers-13', name: 'Chilli Paneer', price: '$14.99', description: 'Crispy paneer tossed with peppers, onions and green chillies in a spicy soy glaze.' },
+          { id: 'appetizers-14', name: 'Paneer Majestic', price: '$13.99', description: 'Paneer strips fried and tossed in a yogurt, green chilli and curry leaf seasoning.' },
+          { id: 'appetizers-15', name: 'Mushroom Majestic', price: '$13.99', description: 'Mushrooms fried and tossed in a yogurt, green chilli and curry leaf seasoning.' },
+          { id: 'appetizers-16', name: 'Crispy Chilli Corn', price: '$12.99', description: 'Crispy fried sweet corn tossed with onions, peppers and a spicy chilli seasoning.' },
+          { id: 'appetizers-17', name: 'Chilli Babycorn', price: '$12.99', description: 'Crispy baby corn tossed with peppers, onions and green chillies in a spicy glaze.' },
+          { id: 'appetizers-18', name: 'Baby Corn Manchuria', price: '$13.99', description: 'Crispy baby corn tossed in a tangy Indo-Chinese Manchurian sauce.' },
+          { id: 'appetizers-19', name: 'Lotus Root Manchurian', price: '$14.99', description: 'Crispy lotus root slices tossed in a tangy Indo-Chinese Manchurian sauce.' },
+          { id: 'appetizers-20', name: 'Karampodi (Gobi/Paneer)', price: '$13.99 / $14.99', description: 'Your choice of cauliflower or paneer tossed in fiery Andhra karampodi chilli powder.' },
+          { id: 'appetizers-21', name: 'Gongura (Gobi/Paneer)', price: '$13.99 / $14.99', description: 'Your choice of cauliflower or paneer tossed with tangy gongura (sorrel leaves).' },
+          { id: 'appetizers-22', name: 'Karvepaku (Gobi/Paneer)', price: '$13.99 / $14.99', description: 'Your choice of cauliflower or paneer tossed with roasted curry leaves and spices.' },
+          { id: 'appetizers-23', name: 'Monagadu (Gobi/Paneer)', price: '$13.99 / $14.99', description: 'Your choice of cauliflower or paneer in a bold, fiery house-style dry masala.' },
+        ],
+      },
+      {
+        name: 'Chicken',
+        items: [
+          { id: 'appetizers-24', name: 'Hyderabadi Chicken 65', price: '$14.99', description: 'Hyderabadi-style boneless chicken fried and tossed with yogurt, curry leaves and chillies.' },
+          { id: 'appetizers-25', name: 'Kaju Chicken Pakoda', price: '$14.99', description: 'Crispy chicken fritters with cashews, curry leaves and green chillies.' },
+          { id: 'appetizers-26', name: 'Chilli Chicken', price: '$14.99', description: 'Crispy chicken tossed with peppers, onions and green chillies in a spicy soy glaze.' },
+          { id: 'appetizers-27', name: 'Chicken Manchurian', price: '$14.99', description: 'Crispy chicken tossed in a tangy Indo-Chinese sauce with garlic and spring onions.' },
+          { id: 'appetizers-28', name: 'Chicken Sukka', price: '$14.99', description: 'Chicken dry-roasted with coconut, black pepper and aromatic spices.' },
+          { id: 'appetizers-29', name: 'Pepper Chicken Fry', price: '$14.99', description: 'Chicken stir-fried with crushed black pepper, onions and curry leaves.' },
+          { id: 'appetizers-30', name: 'Chicken Lollipops/Drums Of Heaven (Wet)', price: '$14.99', description: 'Chicken lollipops tossed in a spicy, sticky Indo-Chinese sauce.' },
+          { id: 'appetizers-31', name: 'Chicken Majestic', price: '$14.99', description: 'Chicken strips fried and tossed in a yogurt, green chilli and curry leaf seasoning.' },
+          { id: 'appetizers-32', name: 'Cilantro Chicken', price: '$14.99', description: 'Boneless chicken tossed in a fresh cilantro, green chilli and garlic sauce.' },
+          { id: 'appetizers-33', name: 'Ginger Chicken', price: '$14.99', description: 'Boneless chicken stir-fried with fresh ginger, garlic and spring onions.' },
+          { id: 'appetizers-34', name: 'Chicken 555', price: '$14.99', description: 'Crispy boneless chicken tossed in a spicy, tangy sauce with garlic and curry leaves.' },
+          { id: 'appetizers-35', name: 'Mirapakaya Kodi Vepudu (Bone-in/Boneless)', price: '$15.99', description: 'Andhra-style chicken fry with green chillies, curry leaves and spices.' },
+          { id: 'appetizers-36', name: 'Karampodi Chicken', price: '$14.99', description: 'Chicken tossed in fiery Andhra karampodi, a roasted red chilli spice blend.' },
+          { id: 'appetizers-37', name: 'Gongura Chicken', price: '$14.99', description: 'Chicken tossed with tangy gongura (sorrel leaves) and Andhra spices.' },
+          { id: 'appetizers-38', name: 'Karivepaku Chicken', price: '$14.99', description: 'Chicken tossed with roasted curry leaves, chillies and spices.' },
+          { id: 'appetizers-39', name: 'Monagadu Chicken', price: '$14.99', description: 'Chicken in a bold, fiery house-style dry masala.' },
+        ],
+      },
+      {
+        name: 'Goat',
+        items: [
+          { id: 'appetizers-40', name: "Chef's Special Mamsam Vepudu (Boneless)", price: '$20.99', description: "Chef's special Andhra-style goat fry with onions, curry leaves and spices." },
+          { id: 'appetizers-41', name: 'Mutton Sukka (Bone-in)', price: '$17.99', description: 'Goat dry-roasted with coconut, black pepper and aromatic spices.' },
+          { id: 'appetizers-42', name: 'Goat Pepper Fry', price: '$17.99', description: 'Goat stir-fried with crushed black pepper, onions and curry leaves.' },
+          { id: 'appetizers-43', name: 'Mutton Chilli Roast', price: '$17.99', description: 'Mutton roasted with green chillies, onions and spices.' },
+          { id: 'appetizers-44', name: 'Gongura Mutton Sukka (Bone-in)', price: '$19.99', description: 'Mutton dry-roasted with tangy gongura (sorrel leaves) and Andhra spices.' },
+          { id: 'appetizers-45', name: 'Mughlai Mutton Roast', price: '$17.99', description: 'Mutton roasted Mughlai-style with onions, nuts and aromatic spices.' },
+        ],
+      },
+      {
+        name: 'Fish',
+        items: [
+          { id: 'appetizers-46', name: 'Apollo Fish', price: '$16.99', description: 'Hyderabadi-style boneless fish fried and tossed in a spicy yogurt-chilli sauce.' },
+          { id: 'appetizers-47', name: 'Fish 65 (Deep Fry)', price: '$16.99', description: 'Spicy deep-fried fish bites tossed with curry leaves and green chillies.' },
+          { id: 'appetizers-48', name: 'Cilantro Fish', price: '$16.99', description: 'Fried fish tossed in a fresh cilantro, green chilli and garlic sauce.' },
+          { id: 'appetizers-49', name: 'Malabar Tawa Fish (Tilapia)', price: '$17.99', description: 'Tilapia marinated in Malabar spices and griddle-fried on the tawa.' },
+          { id: 'appetizers-50', name: 'Andhra Fish Fry (Bone-in)', price: '$20.99', description: 'Fish marinated in fiery Andhra spices and shallow-fried until crisp.' },
+          { id: 'appetizers-51', name: 'Karampodi Fish', price: '$17.99', description: 'Fish tossed in fiery Andhra karampodi, a roasted red chilli spice blend.' },
+          { id: 'appetizers-52', name: 'Monagadu Fish', price: '$17.99', description: 'Fish in a bold, fiery house-style dry masala.' },
+        ],
+      },
+      {
+        name: 'Shrimp/Prawn',
+        items: [
+          { id: 'appetizers-53', name: 'Chilli Prawn', price: '$17.99', description: 'Shrimp tossed with peppers, onions and green chillies in a spicy soy glaze.' },
+          { id: 'appetizers-54', name: 'Shrimp Majestic', price: '$17.99', description: 'Shrimp fried and tossed in a yogurt, green chilli and curry leaf seasoning.' },
+          { id: 'appetizers-55', name: 'Shrimp Pepper Fry', price: '$17.99', description: 'Shrimp stir-fried with crushed black pepper, onions and curry leaves.' },
+          { id: 'appetizers-56', name: 'Hyderabadi Shrimp 65', price: '$17.99', description: 'Hyderabadi-style spicy fried shrimp tossed with curry leaves and chillies.' },
+          { id: 'appetizers-57', name: 'Gongura Shrimp', price: '$18.99', description: 'Shrimp tossed with tangy gongura (sorrel leaves) and Andhra spices.' },
+          { id: 'appetizers-58', name: 'Cilantro Shrimp', price: '$17.99', description: 'Shrimp tossed in a fresh cilantro, green chilli and garlic sauce.' },
+          { id: 'appetizers-59', name: 'Karampodi Shrimp', price: '$18.99', description: 'Shrimp tossed in fiery Andhra karampodi, a roasted red chilli spice blend.' },
+          { id: 'appetizers-60', name: 'Monagadu Shrimp', price: '$18.99', description: 'Shrimp in a bold, fiery house-style dry masala.' },
+        ],
+      },
+      {
+        name: 'Egg',
+        items: [
+          { id: 'appetizers-61', name: 'Egg Burji (Dry)', price: '$10.99', description: 'Spiced scrambled eggs with onions, tomatoes and green chillies.' },
+          { id: 'appetizers-62', name: 'Egg Masala Fry (3)', price: '$10.99', description: 'Boiled eggs pan-fried in a thick, spicy onion masala.' },
+          { id: 'appetizers-63', name: 'Omelette (Egg/Chicken)', price: '$9.99 / $12.99', description: 'Fluffy omelette with onions, green chillies and cilantro, plain or with chicken.' },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Kebabs',
+    sections: [
+      {
+        items: [
+          { id: 'kebabs-1', name: 'Tandoori Chicken', price: '$17.99', description: 'Bone-in chicken marinated in yogurt and tandoori spices, roasted in the clay oven.' },
+          { id: 'kebabs-2', name: 'Chicken Tikka Kebab', price: '$17.99', description: 'Boneless chicken marinated in spiced yogurt and grilled in the tandoor.' },
+          { id: 'kebabs-3', name: 'Tangdi Kebab', price: '$17.99', description: 'Chicken drumsticks marinated in yogurt and spices, roasted in the tandoor.' },
+          { id: 'kebabs-4', name: 'Murg Malai Kebab', price: '$17.99', description: 'Tender chicken marinated in cream, cheese and mild spices, grilled in the tandoor.' },
+          { id: 'kebabs-5', name: 'Chicken Hariyali', price: '$17.99', description: 'Boneless chicken marinated in mint, cilantro and green chillies, grilled in the tandoor.' },
+          { id: 'kebabs-6', name: 'Chicken Chapli (3 pcs)', price: '$17.99', description: 'Peshawari-style spiced minced chicken patties, pan-fried until crisp.' },
+          { id: 'kebabs-7', name: 'Tandoori Chicken Wild Wings (6 pcs)', price: '$17.99', description: 'Chicken wings marinated in tandoori spices and roasted in the clay oven.' },
+          { id: 'kebabs-8', name: 'Paneer Tikka Kebab', price: '$16.99', description: 'Paneer cubes marinated in spiced yogurt and grilled in the tandoor with peppers and onions.' },
+          { id: 'kebabs-9', name: 'Pudina Paneer Tikka Kebab', price: '$17.99', description: 'Paneer marinated in a fresh mint and yogurt blend, grilled in the tandoor.' },
+          { id: 'kebabs-10', name: 'Mushroom Tikka Kebab', price: '$16.99', description: 'Mushrooms marinated in spiced yogurt and grilled in the tandoor.' },
+          { id: 'kebabs-11', name: 'Lamb Chops (6 pcs)', price: '$24.99', description: 'Lamb chops marinated in yogurt and aromatic spices, grilled in the tandoor.' },
+          { id: 'kebabs-12', name: 'Sheesh Kebab (Chicken/Goat)', price: '$21.99 / $24.99', description: 'Minced chicken or goat seasoned with herbs and spices, skewered and grilled in the tandoor.' },
+          { id: 'kebabs-13', name: 'Tandoori Pomfret Fish', price: '$24.99', description: 'Whole pomfret marinated in tandoori spices and roasted in the clay oven.' },
+          { id: 'kebabs-14', name: 'Gongura Paneer Tikka Kebab', price: '$17.99', description: 'Paneer marinated with tangy gongura (sorrel) and spices, grilled in the tandoor.' },
+          { id: 'kebabs-15', name: 'Gongura Chicken Tikka Kebab', price: '$18.99', description: 'Boneless chicken marinated with tangy gongura (sorrel) and spices, grilled in the tandoor.' },
+          { id: 'kebabs-16', name: 'Mix Veg Kebab', price: '$19.99', description: 'Assorted vegetarian kebabs from the tandoor.' },
+          { id: 'kebabs-17', name: 'Mixed Non-Veg Kebab (Chicken, Goat, Seafood)', price: '$24.99', description: 'An assortment of chicken, goat and seafood kebabs from the tandoor.' },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'House Specials',
+    sections: [
+      {
+        items: [
+          { id: 'house-specials-1', name: 'Hyderabadi Special Haleem', price: '$19.99', description: 'Slow-cooked Hyderabadi stew of meat, wheat and lentils, topped with fried onions.' },
+          { id: 'house-specials-2', name: 'Natukodi Pepper Fry', price: '$18.99', description: 'Country chicken stir-fried with crushed black pepper, onions and curry leaves.' },
+          { id: 'house-specials-3', name: 'House Special Lotus Root', price: '$16.99', description: "Crispy lotus root tossed in the chef's special spicy house seasoning." },
+          { id: 'house-specials-4', name: 'Boneless Mutton Fry Dum Biryani', price: '$20.99', description: 'Dum biryani layered with spicy boneless mutton fry.' },
+          { id: 'house-specials-5', name: 'Ankapur Chicken Curry', price: '$21.99', description: 'Rustic Telangana-style country chicken curry from the village of Ankapur.' },
+          { id: 'house-specials-6', name: 'Nalli Gosht Biryani', price: '$28.99', description: 'Dum biryani crowned with slow-cooked, fall-off-the-bone lamb shank.' },
+        ],
+      },
     ],
   },
   {
     name: 'Entrees',
-    items: [
-      { id: 'e1', name: 'Chicken Biryani', price: '$26.99', image: chickenBiryani, description: 'Aromatic basmati rice dum-cooked with tender chicken and traditional spices.' },
-      { id: 'e2', name: 'Butter Chicken', price: '$19.99', image: butterChicken, description: 'Tandoori chicken simmered in a rich, creamy tomato-butter gravy.' },
-      { id: 'e3', name: 'Paneer Butter Masala', price: '$17.99', image: paneerButterMasala, description: 'Soft paneer cubes cooked in a velvety tomato and cashew gravy.' },
+    sections: [
+      {
+        name: 'Vegetarian',
+        items: [
+          { id: 'entrees-1', name: 'Tomato Tadka Dal', price: '$14.99', description: 'Yellow lentils cooked with tomatoes and finished with a cumin, garlic and chilli tadka.' },
+          { id: 'entrees-2', name: 'Palak Dal (Spinach)', price: '$14.99', description: 'Yellow lentils cooked with fresh spinach and tempered with garlic and cumin.' },
+          { id: 'entrees-3', name: 'Mirchi Ka Saalan', price: '$14.99', description: 'Hyderabadi green chillies in a tangy peanut, sesame and tamarind gravy.' },
+          { id: 'entrees-4', name: 'Gutti Vankaya', price: '$15.99', description: 'Baby eggplants stuffed and cooked in a rich peanut, sesame and tamarind gravy.' },
+          { id: 'entrees-5', name: 'Veg Kurma', price: '$15.99', description: 'Mixed vegetables in a mild, creamy coconut and cashew gravy.' },
+          { id: 'entrees-6', name: 'Okra Masala', price: '$14.99', description: 'Okra cooked with onions, tomatoes and spices.' },
+          { id: 'entrees-7', name: 'Channa Masala', price: '$16.99', description: 'Chickpeas simmered in a spiced onion-tomato gravy.' },
+          { id: 'entrees-8', name: 'Mix Veg Masala', price: '$16.99', description: 'Seasonal vegetables cooked in a spiced onion-tomato masala.' },
+          { id: 'entrees-9', name: 'Palak Paneer (Saag Paneer)', price: '$16.99', description: 'Paneer cubes in a smooth, spiced spinach gravy.' },
+          { id: 'entrees-10', name: 'Kadai Paneer', price: '$16.99', description: 'Paneer with bell peppers and onions in a spicy kadai masala.' },
+          { id: 'entrees-11', name: 'Mutter Paneer Masala', price: '$16.99', description: 'Paneer and green peas in a spiced onion-tomato gravy.' },
+          { id: 'entrees-12', name: 'Paneer Butter Masala', price: '$16.99', description: 'Paneer cubes in a rich, buttery tomato and cashew gravy.' },
+          { id: 'entrees-13', name: 'Paneer Tikka Masala', price: '$16.99', description: 'Tandoor-grilled paneer in a creamy, spiced tikka masala sauce.' },
+          { id: 'entrees-14', name: 'Paneer Burjee', price: '$16.99', description: 'Crumbled paneer cooked with onions, tomatoes and spices.' },
+          { id: 'entrees-15', name: 'Paneer Chettinad', price: '$16.99', description: 'Paneer in a spicy Chettinad gravy with black pepper and roasted spices.' },
+          { id: 'entrees-16', name: 'Shahi Paneer', price: '$16.99', description: 'Paneer in a royal, creamy gravy of cashews, cream and mild spices.' },
+          { id: 'entrees-17', name: 'Navaratan Kurma', price: '$16.99', description: 'Vegetables, fruits and nuts in a mild, creamy cashew gravy.' },
+          { id: 'entrees-18', name: 'Malai Kofta', price: '$16.99', description: 'Paneer and potato dumplings in a rich, creamy cashew gravy.' },
+          { id: 'entrees-19', name: 'Veg Handi Kadai', price: '$16.99', description: 'Mixed vegetables cooked kadai-style with peppers, onions and whole spices.' },
+          { id: 'entrees-20', name: 'Kadai Mushroom', price: '$16.99', description: 'Mushrooms with bell peppers and onions in a spicy kadai masala.' },
+          { id: 'entrees-21', name: 'Aloo Gobi Masala', price: '$14.99', description: 'Potatoes and cauliflower cooked with onions, tomatoes and spices.' },
+          { id: 'entrees-22', name: 'Chettinadu Veg Curry', price: '$14.99', description: 'Mixed vegetables in a spicy Chettinad gravy with black pepper and roasted spices.' },
+          { id: 'entrees-23', name: 'Okra Masala Fry', price: '$14.99', description: 'Okra stir-fried with onions and spices until crisp.' },
+          { id: 'entrees-24', name: 'Aloo Mutter', price: '$14.99', description: 'Potatoes and green peas in a spiced onion-tomato gravy.' },
+          { id: 'entrees-25', name: 'Methi Chaman', price: '$16.99', description: 'Kashmiri-style paneer in a fragrant fenugreek and spinach gravy.' },
+        ],
+      },
+      {
+        name: 'Chicken',
+        items: [
+          { id: 'entrees-26', name: 'Shahi Murgh Badami', price: '$18.99', description: 'Chicken in a royal almond and cream gravy with mild spices.' },
+          { id: 'entrees-27', name: 'Dum-Ka-Murg', price: '$18.99', description: 'Hyderabadi chicken slow-cooked on dum in a yogurt, nut and spice gravy.' },
+          { id: 'entrees-28', name: 'Murgh Afghani', price: '$18.99', description: 'Chicken in a creamy, mildly spiced Afghani-style gravy.' },
+          { id: 'entrees-29', name: 'Kadai Chicken', price: '$18.99', description: 'Chicken with bell peppers and onions in a spicy kadai masala.' },
+          { id: 'entrees-30', name: 'Chettinad Chicken (Bone-in/Boneless)', price: '$18.99', description: 'Chicken in a fiery Chettinad gravy with black pepper and roasted spices.' },
+          { id: 'entrees-31', name: 'Butter Chicken', price: '$18.99', description: 'Tandoori chicken simmered in a rich, creamy tomato-butter gravy.' },
+          { id: 'entrees-32', name: 'Palak Chicken', price: '$18.99', description: 'Chicken cooked in a smooth, spiced spinach gravy.' },
+          { id: 'entrees-33', name: 'Chicken Tikka Masala', price: '$18.99', description: 'Tandoor-grilled chicken in a creamy, spiced tikka masala sauce.' },
+          { id: 'entrees-34', name: 'Ankapur Chicken Curry (Country Chicken)', price: '$21.99', description: 'Rustic Telangana-style country chicken curry from the village of Ankapur.' },
+          { id: 'entrees-35', name: 'Gongura Chicken Curry', price: '$18.99', description: 'Chicken curry cooked with tangy gongura (sorrel leaves) and Andhra spices.' },
+          { id: 'entrees-36', name: 'Andhra Chicken Curry (Bone-in)', price: '$18.99', description: 'Chicken in a spicy, home-style Andhra curry.' },
+          { id: 'entrees-37', name: 'Ramba Chicken (Must Try)', price: '$18.99', description: "A house-favorite chicken curry made with the chef's signature spice blend." },
+        ],
+      },
+      {
+        name: 'Egg',
+        items: [
+          { id: 'entrees-38', name: 'Egg Bhurji', price: '$17.99', description: 'Spiced scrambled eggs with onions, tomatoes and green chillies.' },
+          { id: 'entrees-39', name: 'Egg Masala', price: '$17.99', description: 'Boiled eggs simmered in a spiced onion-tomato gravy.' },
+        ],
+      },
+      {
+        name: 'Goat',
+        items: [
+          { id: 'entrees-40', name: 'Goat Mughalai Curry', price: '$21.99', description: 'Goat in a rich Mughlai gravy of onions, yogurt, nuts and aromatic spices.' },
+          { id: 'entrees-41', name: 'Gongura Mutton Curry', price: '$21.99', description: 'Goat cooked with tangy gongura (sorrel leaves), an Andhra classic.' },
+          { id: 'entrees-42', name: 'Hyderabadi Mutton Masala', price: '$21.99', description: 'Goat cooked in a spicy Hyderabadi masala of onions, tomatoes and spices.' },
+          { id: 'entrees-43', name: 'Mutton Sukka Curry', price: '$21.99', description: 'Goat cooked with coconut, black pepper and roasted spices in a semi-dry masala.' },
+          { id: 'entrees-44', name: 'Shahi Gosht (Goat) Korma', price: '$22.99', description: 'Boneless goat in a royal korma of yogurt, cashews and mild spices.' },
+          { id: 'entrees-45', name: 'Dum-Ka-Gosht', price: '$21.99', description: 'Hyderabadi goat slow-cooked on dum in a yogurt and spice gravy.' },
+          { id: 'entrees-46', name: 'Lamb Vindaloo', price: '$21.99', description: 'Lamb in a fiery, tangy Goan vindaloo sauce with vinegar and chillies.' },
+          { id: 'entrees-47', name: 'Kadai Goat', price: '$21.99', description: 'Goat with bell peppers and onions in a spicy kadai masala.' },
+          { id: 'entrees-48', name: 'Goat Kheema Masala', price: '$23.99', description: 'Minced goat cooked with peas, onions, tomatoes and spices.' },
+          { id: 'entrees-49', name: 'Goat Roganjosh', price: '$21.99', description: 'Kashmiri-style goat in an aromatic red gravy with whole spices.' },
+          { id: 'entrees-50', name: 'Andhra Goat Curry', price: '$21.99', description: 'Goat in a spicy, home-style Andhra curry.' },
+          { id: 'entrees-51', name: 'Mutton Rara', price: '$23.99', description: 'Punjabi-style goat curry cooked with minced mutton and rich spices.' },
+          { id: 'entrees-52', name: 'Lamb Tikka Masala', price: '$23.99', description: 'Tandoor-grilled lamb in a creamy, spiced tikka masala sauce.' },
+        ],
+      },
+      {
+        name: 'Sea Food',
+        items: [
+          { id: 'entrees-53', name: 'Nellore Fish Curry', price: '$21.99', description: 'Nellore-style tangy fish curry with tamarind and spices.' },
+          { id: 'entrees-54', name: 'Meen Alleppey Curry', price: '$21.99', description: 'Kerala-style fish curry with coconut milk and raw mango.' },
+          { id: 'entrees-55', name: 'Chettinadu Fish Curry', price: '$21.99', description: 'Fish in a spicy Chettinad gravy with black pepper and roasted spices.' },
+          { id: 'entrees-56', name: 'Kadai Shrimp', price: '$21.99', description: 'Shrimp with bell peppers and onions in a spicy kadai masala.' },
+          { id: 'entrees-57', name: 'Shrimp Tikka Masala', price: '$21.99', description: 'Shrimp in a creamy, spiced tikka masala sauce.' },
+          { id: 'entrees-58', name: 'Shrimp Butter Masala', price: '$21.99', description: 'Shrimp in a rich, buttery tomato and cashew gravy.' },
+          { id: 'entrees-59', name: 'HBK Shrimp Curry', price: '$21.99', description: "Our house-special shrimp curry with the chef's signature spices." },
+          { id: 'entrees-60', name: 'Gongura Shrimp Curry', price: '$21.99', description: 'Shrimp curry cooked with tangy gongura (sorrel leaves) and Andhra spices.' },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Breads & Accompaniments',
+    sections: [
+      {
+        items: [
+          { id: 'breads-accompaniments-1', name: 'Plain Naan', price: '$2.99', description: 'Soft leavened bread baked in the tandoor.' },
+          { id: 'breads-accompaniments-2', name: 'Butter Naan', price: '$3.49', description: 'Soft tandoor-baked naan brushed with butter.' },
+          { id: 'breads-accompaniments-3', name: 'Garlic Naan', price: '$3.99', description: 'Tandoor-baked naan topped with garlic and cilantro.' },
+          { id: 'breads-accompaniments-4', name: 'Chilli Garlic Naan', price: '$4.99', description: 'Tandoor-baked naan topped with garlic and green chillies.' },
+          { id: 'breads-accompaniments-5', name: 'Butter Roti', price: '$3.49', description: 'Tandoor-baked whole-wheat roti brushed with butter.' },
+          { id: 'breads-accompaniments-6', name: 'Tandoori Roti', price: '$3.49', description: 'Whole-wheat flatbread baked in the tandoor.' },
+          { id: 'breads-accompaniments-7', name: 'Onion Kulcha', price: '$4.99', description: 'Tandoor-baked bread stuffed with spiced onions.' },
+          { id: 'breads-accompaniments-8', name: "Chef's Special Naan (Paneer)", price: '$5.99', description: "The chef's special naan stuffed with spiced paneer." },
+          { id: 'breads-accompaniments-9', name: 'Mutton Kheema Naan', price: '$7.99', description: 'Tandoor-baked naan stuffed with spiced minced mutton.' },
+          { id: 'breads-accompaniments-10', name: 'Chicken Kheema Naan', price: '$6.99', description: 'Tandoor-baked naan stuffed with spiced minced chicken.' },
+          { id: 'breads-accompaniments-11', name: 'Malabar Paratha (2 pcs)', price: '$3.99', description: 'Flaky, multi-layered Kerala-style paratha.' },
+          { id: 'breads-accompaniments-12', name: 'Kothu Paratha Veg', price: '$13.99', description: 'Shredded paratha stir-fried on the griddle with vegetables, onions and spices.' },
+          { id: 'breads-accompaniments-13', name: 'Kothu Paratha Egg', price: '$14.99', description: 'Shredded paratha stir-fried on the griddle with egg, onions and spices.' },
+          { id: 'breads-accompaniments-14', name: 'Kothu Paratha Chicken', price: '$15.99', description: 'Shredded paratha stir-fried on the griddle with chicken, onions and spices.' },
+          { id: 'breads-accompaniments-15', name: 'Bread Basket (Plain, Butter, Garlic, Onion Kulcha)', price: '$13.99', description: 'An assortment of plain, butter and garlic naan with onion kulcha.' },
+          { id: 'breads-accompaniments-16', name: 'Rumali Roti', price: '$3.99', description: 'Paper-thin, soft handkerchief bread.' },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Indo-Chinese',
+    sections: [
+      {
+        name: 'Vegetarian',
+        items: [
+          { id: 'indo-chinese-1', name: 'Gobi Manchurian (Gravy)', price: '$11.99', description: 'Crispy cauliflower simmered in a savory Indo-Chinese Manchurian gravy.' },
+          { id: 'indo-chinese-2', name: 'Veg Manchurian (Gravy)', price: '$11.99', description: 'Mixed-vegetable dumplings simmered in a savory Indo-Chinese Manchurian gravy.' },
+          { id: 'indo-chinese-3', name: 'Chilli Gobi (Gravy)', price: '$11.99', description: 'Fried cauliflower with peppers and onions in a spicy Indo-Chinese chilli gravy.' },
+          { id: 'indo-chinese-4', name: 'Vegetable Fried Rice', price: '$12.99', description: 'Wok-tossed rice with mixed vegetables and soy sauce.' },
+          { id: 'indo-chinese-5', name: 'Schezwan Vegetable Fried Rice', price: '$12.99', description: 'Wok-tossed rice with vegetables in a spicy Schezwan sauce.' },
+          { id: 'indo-chinese-6', name: 'Veg Hakka Noodles', price: '$12.99', description: 'Wok-tossed noodles with crunchy vegetables and soy sauce.' },
+          { id: 'indo-chinese-7', name: 'Schezwan Veg Noodles', price: '$12.99', description: 'Wok-tossed noodles with vegetables in a spicy Schezwan sauce.' },
+          { id: 'indo-chinese-8', name: 'Egg Fried Rice', price: '$13.99', description: 'Wok-tossed rice with scrambled egg, vegetables and soy sauce.' },
+          { id: 'indo-chinese-9', name: 'Schezwan Egg Fried Rice', price: '$13.99', description: 'Wok-tossed rice with egg in a spicy Schezwan sauce.' },
+        ],
+      },
+      {
+        name: 'Non-Veg',
+        items: [
+          { id: 'indo-chinese-10', name: 'Chicken Manchurian (Gravy)', price: '$13.99', description: 'Crispy chicken simmered in a savory Indo-Chinese Manchurian gravy.' },
+          { id: 'indo-chinese-11', name: 'Chilli Chicken (Gravy)', price: '$13.99', description: 'Fried chicken with peppers and onions in a spicy Indo-Chinese chilli gravy.' },
+          { id: 'indo-chinese-12', name: 'Chilli Fish (Gravy)', price: '$15.99', description: 'Fried fish with peppers and onions in a spicy Indo-Chinese chilli gravy.' },
+          { id: 'indo-chinese-13', name: 'Schezwan Shrimp (Gravy)', price: '$16.99', description: 'Shrimp tossed with peppers and onions in a spicy Schezwan sauce.' },
+          { id: 'indo-chinese-14', name: 'Egg Fried Rice', price: '$14.99', description: 'Wok-tossed rice with scrambled egg, vegetables and soy sauce.' },
+          { id: 'indo-chinese-15', name: 'Schezwan Egg Fried Rice', price: '$14.99', description: 'Wok-tossed rice with egg in a spicy Schezwan sauce.' },
+          { id: 'indo-chinese-16', name: 'Chicken Fried Rice', price: '$14.99', description: 'Wok-tossed rice with chicken, egg, vegetables and soy sauce.' },
+          { id: 'indo-chinese-17', name: 'Schezwan Chicken Fried Rice', price: '$14.99', description: 'Wok-tossed rice with chicken in a spicy Schezwan sauce.' },
+          { id: 'indo-chinese-18', name: 'Chicken Noodles', price: '$14.99', description: 'Wok-tossed noodles with chicken, vegetables and soy sauce.' },
+          { id: 'indo-chinese-19', name: 'Schezwan Chicken Noodles', price: '$14.99', description: 'Wok-tossed noodles with chicken in a spicy Schezwan sauce.' },
+          { id: 'indo-chinese-20', name: 'Egg Noodles', price: '$14.99', description: 'Wok-tossed noodles with egg, vegetables and soy sauce.' },
+          { id: 'indo-chinese-21', name: 'Schezwan Egg Noodles', price: '$14.99', description: 'Wok-tossed noodles with egg in a spicy Schezwan sauce.' },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Biryanis & Rice',
+    priceLabels: ['Regular', 'Family Pack'],
+    sections: [
+      {
+        items: [
+          { id: 'biryanis-rice-1', name: 'Veg Dum Biryani', price: '$15.99', familyPrice: '$32.99', description: 'Basmati rice layered with spiced vegetables and slow-cooked on dum.' },
+          { id: 'biryanis-rice-2', name: 'Gongura Veg Biryani', price: '$16.99', familyPrice: '$41.99', description: 'Vegetable biryani flavored with tangy gongura (sorrel leaves).' },
+          { id: 'biryanis-rice-3', name: 'Ulavacharu Veg Biryani', price: '$17.99', familyPrice: '$41.99', description: 'Vegetable biryani flavored with ulavacharu, a tangy horse gram reduction.' },
+          { id: 'biryanis-rice-4', name: 'Paneer Dum Biryani', price: '$16.99', familyPrice: '$38.99', description: 'Basmati rice layered with spiced paneer and slow-cooked on dum.' },
+          { id: 'biryanis-rice-5', name: 'Gongura Paneer Biryani', price: '$17.99', familyPrice: '$42.99', description: 'Paneer biryani flavored with tangy gongura (sorrel leaves).' },
+          { id: 'biryanis-rice-6', name: 'Ulavacharu Paneer Biryani', price: '$18.99', familyPrice: '$42.99', description: 'Paneer biryani flavored with ulavacharu, a tangy horse gram reduction.' },
+          { id: 'biryanis-rice-7', name: 'Egg Dum Biryani', price: '$16.99', familyPrice: '$33.99', description: 'Basmati rice layered with masala-coated boiled eggs and slow-cooked on dum.' },
+          { id: 'biryanis-rice-8', name: 'Ulavacharu Egg Biryani', price: '$18.99', familyPrice: '$39.99', description: 'Egg biryani flavored with ulavacharu, a tangy horse gram reduction.' },
+          { id: 'biryanis-rice-9', name: 'Gongura Egg Biryani', price: '$18.99', familyPrice: '$41.99', description: 'Egg biryani flavored with tangy gongura (sorrel leaves).' },
+          { id: 'biryanis-rice-10', name: 'Hyderabadi Chicken Dum Biryani', price: '$16.99', familyPrice: '$42.99', description: 'Classic Hyderabadi biryani of marinated chicken and basmati rice slow-cooked on dum.' },
+          { id: 'biryanis-rice-11', name: 'Boneless Chicken Biryani', price: '$17.99', familyPrice: '$47.99', description: 'Basmati rice layered with tender boneless chicken and aromatic spices.' },
+          { id: 'biryanis-rice-12', name: 'HBK Special Chicken Biryani', price: '$18.99', familyPrice: '$49.99', description: "Our signature chicken biryani made with the chef's special masala." },
+          { id: 'biryanis-rice-13', name: 'Chicken Fry Biryani', price: '$18.99', familyPrice: '$47.99', description: 'Biryani rice served with spicy chicken fry.' },
+          { id: 'biryanis-rice-14', name: 'Ulavacharu Chicken Biryani', price: '$19.99', familyPrice: '$45.99', description: 'Chicken biryani flavored with ulavacharu, a tangy horse gram reduction.' },
+          { id: 'biryanis-rice-15', name: 'Gongura Chicken Biryani', price: '$19.99', familyPrice: '$47.99', description: 'Chicken biryani flavored with tangy gongura (sorrel leaves).' },
+          { id: 'biryanis-rice-16', name: 'Natukodi Biryani (Country Chicken)', price: '$19.99', familyPrice: '$49.99', description: 'Dum biryani made with flavorful country chicken.' },
+          { id: 'biryanis-rice-17', name: 'Hyderabadi Goat Dum Biryani', price: '$18.99', familyPrice: '$51.99', description: 'Classic Hyderabadi biryani of marinated goat and basmati rice slow-cooked on dum.' },
+          { id: 'biryanis-rice-18', name: 'Mutton Fry Biryani', price: '$18.99', familyPrice: '$51.99', description: 'Biryani rice served with spicy Andhra-style mutton fry.' },
+          { id: 'biryanis-rice-19', name: 'Boneless Mutton Fry Dum Biryani', price: '$20.99', familyPrice: '$53.99', description: 'Dum biryani layered with spicy boneless mutton fry.' },
+          { id: 'biryanis-rice-20', name: 'Goat Kheema Biryani', price: '$20.99', familyPrice: '$55.99', description: 'Basmati rice layered with spiced minced goat and slow-cooked on dum.' },
+          { id: 'biryanis-rice-21', name: 'Ulavacharu Mutton Fry Biryani', price: '$19.99', familyPrice: '$55.99', description: 'Mutton fry biryani flavored with ulavacharu, a tangy horse gram reduction.' },
+          { id: 'biryanis-rice-22', name: 'Ulavacharu Boneless Mutton Fry Biryani', price: '$21.99', familyPrice: '$57.99', description: 'Boneless mutton fry biryani flavored with ulavacharu, a tangy horse gram reduction.' },
+          { id: 'biryanis-rice-23', name: 'Gongura Goat Biryani (Bone-In)', price: '$19.99', familyPrice: '$53.99', description: 'Goat biryani flavored with tangy gongura (sorrel leaves).' },
+          { id: 'biryanis-rice-24', name: 'Gongura Goat Biryani (Boneless)', price: '$21.99', familyPrice: '$55.99', description: 'Goat biryani flavored with tangy gongura (sorrel leaves).' },
+          { id: 'biryanis-rice-25', name: 'Ulavacharu Goat Biryani (Bone-in)', price: '$19.99', familyPrice: '$55.99', description: 'Goat biryani flavored with ulavacharu, a tangy horse gram reduction.' },
+          { id: 'biryanis-rice-26', name: 'Ulavacharu Goat Biryani (Boneless)', price: '$21.99', familyPrice: '$57.99', description: 'Goat biryani flavored with ulavacharu, a tangy horse gram reduction.' },
+          { id: 'biryanis-rice-27', name: 'Nalli Gosht Biryani', price: '$28.99', description: 'Dum biryani crowned with slow-cooked, fall-off-the-bone lamb shank.' },
+          { id: 'biryanis-rice-28', name: 'Special Fish Biryani', price: '$19.99', familyPrice: '$51.99', description: 'Basmati rice layered with spiced fish and slow-cooked on dum.' },
+          { id: 'biryanis-rice-29', name: 'Ulavacharu Fish Biryani', price: '$20.99', familyPrice: '$53.99', description: 'Fish biryani flavored with ulavacharu, a tangy horse gram reduction.' },
+          { id: 'biryanis-rice-30', name: 'Shrimp Biryani', price: '$19.99', familyPrice: '$52.99', description: 'Basmati rice layered with spiced shrimp and slow-cooked on dum.' },
+          { id: 'biryanis-rice-31', name: 'Ulavacharu Shrimp Biryani', price: '$20.99', familyPrice: '$55.99', description: 'Shrimp biryani flavored with ulavacharu, a tangy horse gram reduction.' },
+          { id: 'biryanis-rice-32', name: 'Gongura Shrimp Biryani', price: '$20.99', familyPrice: '$55.99', description: 'Shrimp biryani flavored with tangy gongura (sorrel leaves).' },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Weekend Special Pulavs',
+    notes: [
+      'Friday to Sunday',
+    ],
+    sections: [
+      {
+        items: [
+          { id: 'weekend-special-pulavs-1', name: 'Kofta Pulav', price: '$16.99', description: 'Fragrant pulav rice served with vegetable kofta.' },
+          { id: 'weekend-special-pulavs-2', name: 'Gutti Vankaya Pulav', price: '$16.99', description: 'Fragrant pulav served with stuffed baby eggplant curry.' },
+          { id: 'weekend-special-pulavs-3', name: 'Green Mirchi Paneer Pulav', price: '$17.99', description: 'Paneer pulav cooked with a fresh green chilli and herb masala.' },
+          { id: 'weekend-special-pulavs-4', name: 'Egg Pulav', price: '$15.99', description: 'Fragrant rice cooked with masala eggs and whole spices.' },
+          { id: 'weekend-special-pulavs-5', name: 'Chicken Pulav', price: '$18.99', description: 'Fragrant rice cooked with chicken, mint and whole spices.' },
+          { id: 'weekend-special-pulavs-6', name: 'Green Mirchi Chicken Pulav', price: '$19.99', description: 'Chicken pulav cooked with a fresh green chilli and herb masala.' },
+          { id: 'weekend-special-pulavs-7', name: 'Natukodi Pulav', price: '$19.99', description: 'Fragrant rice cooked with country chicken and whole spices.' },
+          { id: 'weekend-special-pulavs-8', name: 'Mutton Fry Pulav (Bone-in/Boneless)', price: '$19.99', description: 'Fragrant pulav rice served with spicy mutton fry.' },
+          { id: 'weekend-special-pulavs-9', name: 'Goat Kheema Pulav', price: '$19.99', description: 'Fragrant rice cooked with spiced minced goat.' },
+          { id: 'weekend-special-pulavs-10', name: 'Green Mirchi Goat Pulav', price: '$20.99', description: 'Goat pulav cooked with a fresh green chilli and herb masala.' },
+          { id: 'weekend-special-pulavs-11', name: 'Shrimp Pulav', price: '$19.99', description: 'Fragrant rice cooked with spiced shrimp and whole spices.' },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Other Rice Specialities',
+    sections: [
+      {
+        items: [
+          { id: 'other-rice-specialities-1', name: 'Plain Rice', price: '$3.99', description: 'Steamed long-grain basmati rice.' },
+          { id: 'other-rice-specialities-2', name: 'Jeera Rice', price: '$8.99', description: 'Basmati rice tempered with cumin seeds and ghee.' },
+          { id: 'other-rice-specialities-3', name: 'Ghee Rice', price: '$6.99', description: 'Fragrant basmati rice cooked with ghee and whole spices.' },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Lunch Thali',
+    notes: [
+      'Monday to Friday',
+    ],
+    sections: [
+      {
+        items: [
+          { id: 'lunch-thali-1', name: 'Veg Thali', price: '$15.99', description: 'A complete vegetarian meal with rice, bread, curries, dal and dessert.' },
+          { id: 'lunch-thali-2', name: 'Paneer Thali', price: '$16.99', description: 'A complete meal with a paneer curry, rice, bread, dal and accompaniments.' },
+          { id: 'lunch-thali-3', name: 'Chicken Thali', price: '$16.99', description: 'A complete meal with a chicken curry, rice, bread, dal and accompaniments.' },
+          { id: 'lunch-thali-4', name: 'Goat Thali', price: '$17.99', description: 'A complete meal with a goat curry, rice, bread, dal and accompaniments.' },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Kids Corner',
+    sections: [
+      {
+        items: [
+          { id: 'kids-corner-1', name: 'Paneer Rice', price: '$9.99', description: 'Mildly spiced rice with paneer, made for little ones.' },
+          { id: 'kids-corner-2', name: 'Butter Chicken Rice', price: '$9.99', description: 'Mild butter chicken served over rice, made for little ones.' },
+          { id: 'kids-corner-3', name: 'Kids Chicken Kebab (Murgh Malai Kebab, 3 pcs)', price: '$10.99', description: 'Mild, creamy murgh malai kebab made for little ones.' },
+        ],
+      },
     ],
   },
   {
     name: 'Desserts',
-    items: [
-      { id: 'd1', name: 'Gulab Jamun', price: '$7.49', image: menu3, description: 'Soft fried milk dumplings soaked in sweet cardamom syrup.' },
-      { id: 'd2', name: 'Rasmalai', price: '$8.49', image: rasmalai, description: 'Spongy cottage cheese dumplings in chilled saffron milk.' },
-      { id: 'd3', name: 'Apricot Delight', price: '$4.99', image: apricotDelight, description: 'A sweet layered dessert featuring apricots and cream.' },
+    sections: [
+      {
+        items: [
+          { id: 'desserts-1', name: 'Qubani Ka Meetha', price: '$7.99', description: 'Hyderabadi dessert of stewed apricots, served with cream.' },
+          { id: 'desserts-2', name: 'Double Ka Meetha', price: '$6.99', description: 'Hyderabadi bread pudding soaked in saffron milk and topped with nuts.' },
+          { id: 'desserts-3', name: 'Gulab Jamun', price: '$4.99', description: 'Soft fried milk dumplings soaked in warm cardamom syrup.' },
+          { id: 'desserts-4', name: 'Rasmalai', price: '$5.99', description: 'Soft cottage cheese dumplings in chilled saffron-cardamom milk.' },
+          { id: 'desserts-5', name: 'Gajar Halwa', price: '$5.99', description: 'Grated carrots slow-cooked with milk, ghee and nuts.' },
+          { id: 'desserts-6', name: 'Kulfi', price: '$4.99', description: 'Traditional dense Indian ice cream flavored with cardamom and nuts.' },
+        ],
+      },
+    ],
+  },
+  {
+    name: 'Beverages',
+    sections: [
+      {
+        name: 'Cold',
+        items: [
+          { id: 'beverages-1', name: 'Thums Up', price: '$3.99', description: 'Classic Indian cola with a strong, fizzy kick.' },
+          { id: 'beverages-2', name: 'Limca', price: '$3.99', description: 'Classic Indian lemon-lime soda.' },
+          { id: 'beverages-3', name: 'Soft Drinks', price: '$2.99', description: 'Assorted chilled sodas.' },
+          { id: 'beverages-4', name: 'Water Bottle', price: '$1.99', description: 'Bottled water.' },
+          { id: 'beverages-5', name: 'Mango Lassi', price: '$5.99', description: 'Chilled yogurt smoothie blended with sweet mango.' },
+          { id: 'beverages-6', name: 'Masala Butter Milk', price: '$2.99', description: 'Chilled spiced buttermilk with ginger, green chilli and cilantro.' },
+          { id: 'beverages-7', name: 'Plain Buttermilk', price: '$2.49', description: 'Chilled, refreshing salted buttermilk.' },
+        ],
+      },
+      {
+        name: 'Hot',
+        items: [
+          { id: 'beverages-8', name: 'South Indian Coffee', price: '$3.49', description: 'Strong South Indian filter coffee with frothy milk.' },
+          { id: 'beverages-9', name: 'Masala Chai', price: '$3.99', description: 'Indian tea brewed with milk, ginger and cardamom.' },
+        ],
+      },
     ],
   },
 ];
