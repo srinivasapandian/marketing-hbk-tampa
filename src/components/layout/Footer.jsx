@@ -3,7 +3,7 @@ import { MapPin, Phone, Mail, Facebook, Instagram, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logoMain from '../../asserts/house-of-biryani.png';
 import footerLogo from '../../asserts/footer.png';
-import { CONTACT_INFO, SOCIAL_LINKS, BUSINESS_HOURS, ORDER_URL } from '../../utils/constants';
+import { CONTACT_INFO, SOCIAL_LINKS, BUSINESS_HOURS, TEMPORARILY_CLOSED, ORDER_URL } from '../../utils/constants';
 
 const quickLinks = [
   { name: 'Home', path: '/' },
@@ -91,6 +91,9 @@ const Footer = () => {
           {/* Hours */}
           <div>
             <Heading>Business Hours</Heading>
+            {TEMPORARILY_CLOSED ? (
+              <p className="text-[14px] font-semibold text-red-500">Temporarily closed</p>
+            ) : (<>
             {Object.keys(BUSINESS_HOURS).length > 1 && <div className="flex gap-2 mb-4">
               {Object.keys(BUSINESS_HOURS).map((t) => (
                 <button
@@ -118,6 +121,7 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+            </>)}
           </div>
         </div>
 

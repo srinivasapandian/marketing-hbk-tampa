@@ -19,7 +19,7 @@ export const CONTACT_INFO = {
   phone: "(732) 474-0463",
   email: "hbk08854@gmail.com",
   address: "1372 Centennial Ave, Piscataway, NJ 08854",
-  hours: "Mon-Sun: 11:30 AM - 10:30 PM"
+  hours: "Temporarily closed"
 };
 
 // Contact form -> Maghil SMTP email API (POST /api/send-email-smtp).
@@ -29,6 +29,10 @@ export const SMTP_LOCATION_ID = "1354573615";
 export const SMTP_CONTACT_PURPOSE = "HBK-PISCATAWAY-CONTACT";
 // reCAPTCHA v2 site key paired with the SMTP API's secret key; the checkbox is hidden while empty.
 export const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
+
+// Google Business Profile lists this location as temporarily closed; set to false once it reopens
+// and restore the weekly hours below from the listing.
+export const TEMPORARILY_CLOSED = true;
 
 export const BUSINESS_HOURS = {
   Store: [
