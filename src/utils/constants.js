@@ -9,8 +9,11 @@ export const ORDER_URL = "https://example.com/order-online";
 export const SOCIAL_LINKS = {
   facebook: "https://www.facebook.com/hbkpiscataway",
   instagram: "https://www.instagram.com/hbkpiscataway",
-  googleReview: "https://g.page/r/Cdy7N_FsJojoEAE/review"
+  googleReview: "https://www.google.com/maps?cid=10900376006634807616"
 };
+
+// Shown under the logo in the header.
+export const CITY_LABEL = "Piscataway, NJ";
 
 export const CONTACT_INFO = {
   phone: "(732) 474-0463",

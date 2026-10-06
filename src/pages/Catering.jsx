@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Phone, Users, UtensilsCrossed, ChefHat, Star } from 'lucide-react';
+import { ArrowRight, Phone, Users, UtensilsCrossed, ChefHat } from 'lucide-react';
 import { motion } from 'motion/react';
 import heroImg from '../asserts/banner-4.png';
 
@@ -7,7 +7,6 @@ const offers = [
   { title: 'Wedding Catering', Icon: Users, text: 'Make your special day unforgettable. We provide full wedding catering with live biryani stations, appetizer spreads, and a dedicated service team.' },
   { title: 'Corporate Events', Icon: UtensilsCrossed, text: 'Impress your clients and colleagues with a premium South Asian spread — from working lunches to large-scale company celebrations.' },
   { title: 'Private Parties', Icon: ChefHat, text: 'Birthday, anniversary, graduation — whatever the occasion, we bring the feast to you with customizable menus and on-site chefs.' },
-  { title: 'Buffet Setups', Icon: Star, text: 'Full buffet service with chafing dishes, serving staff, and a rotating menu of biryanis, curries, breads, and desserts.' },
 ];
 
 const steps = [
@@ -58,7 +57,7 @@ const Catering = () => (
     {/* What we offer */}
     <section className="py-20 px-6 max-w-[1200px] mx-auto">
       <Heading eyebrow="What we offer">Catering for Every Occasion</Heading>
-      <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {offers.map(({ title, Icon, text }) => (
           <div key={title} className="rounded-[28px] border border-white/10 bg-white/[0.03] p-8 text-center">
             <div className="w-[72px] h-[72px] mx-auto mb-6 rounded-2xl bg-[#D8AA3E]/15 flex items-center justify-center">
