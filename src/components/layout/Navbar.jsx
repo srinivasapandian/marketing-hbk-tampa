@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import logoMain from '../../asserts/house-of-biryani.png';
+import { CITY_LABEL } from '../../utils/constants';
 
 const ORDER_URL = 'https://example.com/order-online';
 
@@ -41,12 +42,15 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-[1000] w-full bg-black border-b border-white/10">
       <div className="max-w-[1200px] mx-auto px-5 lg:px-6 h-[72px] lg:h-[90px] flex items-center justify-between">
-        <Link to="/" className="flex-shrink-0">
+        <Link to="/" className="flex-shrink-0 flex flex-col items-center">
           <img
             src={logoMain}
             alt="House of Biryanis Logo"
             className="h-11 w-11 lg:h-14 lg:w-14 object-contain"
           />
+          <span className="mt-0.5 text-[10px] lg:text-[11px] leading-none font-semibold uppercase tracking-wider text-[#D8AA3E] whitespace-nowrap">
+            {CITY_LABEL}
+          </span>
         </Link>
 
         {/* Desktop nav */}

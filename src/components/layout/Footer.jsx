@@ -91,7 +91,7 @@ const Footer = () => {
           {/* Hours */}
           <div>
             <Heading>Business Hours</Heading>
-            <div className="flex gap-2 mb-4">
+            {Object.keys(BUSINESS_HOURS).length > 1 && <div className="flex gap-2 mb-4">
               {Object.keys(BUSINESS_HOURS).map((t) => (
                 <button
                   key={t}
@@ -103,7 +103,7 @@ const Footer = () => {
                   {t}
                 </button>
               ))}
-            </div>
+            </div>}
             <ul className="space-y-2 text-[14px]">
               {BUSINESS_HOURS[tab].map((h) => (
                 <li key={h.day} className="flex justify-between gap-3">
