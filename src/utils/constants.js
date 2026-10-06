@@ -12,6 +12,9 @@ export const SOCIAL_LINKS = {
   googleReview: "https://g.page/r/CccgvjUT7zYTEAE/review"
 };
 
+// Shown under the logo in the header.
+export const CITY_LABEL = "Malvern, PA";
+
 export const CONTACT_INFO = {
   phone: "(484) 568-4879",
   email: "hbk19355@gmail.com",
@@ -27,23 +30,15 @@ export const SMTP_CONTACT_PURPOSE = "HBK-MALVERN-CONTACT";
 // reCAPTCHA v2 site key paired with the SMTP API's secret key; the checkbox is hidden while empty.
 export const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
 
+// Mirrors the Google Business Profile hours for this location.
 export const BUSINESS_HOURS = {
   Store: [
-    { day: 'Monday', closed: true },
-    { day: 'Tuesday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 10:30 PM'] },
-    { day: 'Wednesday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 10:30 PM'] },
-    { day: 'Thursday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 10:30 PM'] },
-    { day: 'Friday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 11:00 PM'] },
-    { day: 'Saturday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 11:00 PM'] },
-    { day: 'Sunday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 10:30 PM'] },
-  ],
-  Online: [
-    { day: 'Monday', closed: true },
+    { day: 'Monday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:00 PM'] },
     { day: 'Tuesday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:00 PM'] },
     { day: 'Wednesday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:00 PM'] },
     { day: 'Thursday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:00 PM'] },
     { day: 'Friday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:30 PM'] },
-    { day: 'Saturday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:30 PM'] },
-    { day: 'Sunday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:00 PM'] },
+    { day: 'Saturday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 10:30 PM'] },
+    { day: 'Sunday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 09:30 PM'] },
   ],
 };
