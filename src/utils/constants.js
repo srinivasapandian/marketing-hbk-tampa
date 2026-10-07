@@ -3,8 +3,8 @@ export const PRIMARY_COLOR = "#FFD700"; // Gold
 export const SECONDARY_COLOR = "#000000"; // Black
 export const ACCENT_COLOR = "#FFFFFF"; // White
 
-// Online ordering is served by Clover. Swap in the location's own Clover ordering link once it is confirmed.
-export const ORDER_URL = "https://www.clover.com/";
+// Online ordering is served by Clover.
+export const ORDER_URL = "https://hbk-cherry-hill-cherry-hill.cloveronline.com/menu/all";
 
 export const SOCIAL_LINKS = {
   facebook: "https://www.facebook.com/hbkcherryhill",
