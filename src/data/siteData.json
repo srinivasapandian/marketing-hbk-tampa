@@ -37,7 +37,7 @@
   "features": [
     {
       "title": "Best Catering",
-      "description": "Delicious South Indian catering for events and celebrations.",
+      "description": "Delicious Indian varieties for your events, gatherings and celebrations.",
       "icon": "/best%20catering.png"
     },
     {
@@ -51,8 +51,8 @@
       "icon": "/freshey%20served.png"
     },
     {
-      "title": "Best Chefs",
-      "description": "Expert chefs preparing authentic and flavorful dishes.",
+      "title": "Experienced Chefs",
+      "description": "Culinary experts preparing authentic and flavorful dishes.",
       "icon": "/best%20chefs.png"
     }
   ]

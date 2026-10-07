@@ -5,7 +5,7 @@ import { Plus, Minus } from 'lucide-react';
 const faqs = [
   {
     q: 'What appetizers do you offer at House of Biryanis & Kebabs?',
-    a: 'We serve a variety of vegetarian appetizers like samosas and chilli paneer, and non-vegetarian appetizers like fried chicken and fish starters.',
+    a: 'We serve various veg and non-veg appetizers like paneer, lotus root, chicken and fish starters.',
   },
   {
     q: 'What options do you have for Biriyanis?',
@@ -17,11 +17,7 @@ const faqs = [
   },
   {
     q: 'What breads and accompaniments are available?',
-    a: 'We serve freshly baked breads like butter naan, garlic naan, and paratta.',
-  },
-  {
-    q: 'Which areas do you serve?',
-    a: 'We proudly serve customers in Malvern, Paoli, Exton, Frazer, Berwyn, Phoenixville, and nearby Chester County communities, making it easy to enjoy our authentic Hyderabadi biryani, kebabs, and Indian cuisine whether you dine in, order takeout, or place an online order.',
+    a: 'We serve freshly baked breads like butter naan, garlic naan, rumali roti, and paratta.',
   },
 ];
 
@@ -31,7 +27,7 @@ const Faq = () => {
   const [open, setOpen] = useState(null);
 
   return (
-    <section id="faq" className="bg-black py-20 px-6 text-white">
+    <section id="faq" className="bg-[#1a130e] py-20 px-6 text-white">
       <div className="max-w-[1200px] mx-auto grid lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-16 items-start">
         <div>
           <p className="text-[#D8AA3E] text-sm font-bold uppercase tracking-[0.3em] mb-4">Got Questions?</p>

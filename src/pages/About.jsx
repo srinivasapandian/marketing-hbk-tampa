@@ -3,6 +3,11 @@ import { ArrowRight, Moon } from 'lucide-react';
 import { motion } from 'motion/react';
 import { ORDER_URL } from '../utils/constants';
 import heroImg from '../asserts/banner-1.png';
+import FoodCombo from '../components/FoodCombo';
+import menuSoup from '../asserts/homepage-menuimages/tomato-soup.png';
+import menuSamosa from '../asserts/homepage-menuimages/samosas.png';
+import menuKebab from '../asserts/homepage-menuimages/seekh-kebabs.png';
+import menuBiryani from '../asserts/homepage-menuimages/chicken-biryani.png';
 
 const promises = [
   { title: 'Premium Quality', icon: '/premiuim%20quality.png', text: 'Only the finest basmati rice, hand-picked spices, and fresh ingredients make it into our kitchen.' },
@@ -13,10 +18,10 @@ const promises = [
 ];
 
 const dishes = [
-  { name: 'Appetizers', image: '/menu1.jpg' },
-  { name: 'Ethnic Entrees', image: '/menu2.jpg' },
-  { name: 'Beverages', image: '/menu4.jpg' },
-  { name: 'Desserts', image: '/menu3.jpg' },
+  { name: 'Soups', image: menuSoup },
+  { name: 'Appetizers', image: menuSamosa },
+  { name: 'Kebabs', image: menuKebab },
+  { name: 'Biryanis & Entrees', image: menuBiryani },
 ];
 
 const SectionTitle = ({ eyebrow, children, center = true }) => (
@@ -27,7 +32,7 @@ const SectionTitle = ({ eyebrow, children, center = true }) => (
 );
 
 const About = () => (
-  <div className="bg-[#0a0908] text-white">
+  <div className="bg-[#1a130e] text-white">
     {/* Hero */}
     <section className="relative border-b border-[#D8AA3E] overflow-hidden">
       <img src={heroImg} alt="" className="absolute inset-0 w-full h-full object-cover" />
@@ -43,7 +48,7 @@ const About = () => (
           House of Biryani<br /><span className="text-[#D8AA3E] font-normal">Malvern</span>
         </h1>
         <p className="mt-6 text-lg md:text-xl text-white/90 leading-relaxed">
-          Authentic halal South Asian cuisine, slow-cooked with love and served with pride in Malvern, PA.
+          Authentic halal Indian cuisine with Hyderabadi and South Indian flavors, slow-cooked with love and served with pride in Malvern, PA.
         </p>
         <div className="mt-8 flex flex-wrap gap-4 justify-center">
           <Link to="/menu" className="inline-flex items-center gap-2 rounded-full bg-[#FFD700] text-black font-semibold px-8 py-3.5 hover:brightness-110 transition">
@@ -59,7 +64,7 @@ const About = () => (
     {/* Story */}
     <section className="py-20 px-6 max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-14 items-center">
       <div className="relative">
-        <img src="/about.png" alt="House of Biryani dining" className="w-full h-[380px] md:h-[560px] object-cover rounded-[28px]" />
+        <FoodCombo className="w-full h-[380px] md:h-[560px] rounded-[28px]" />
         <img src="/halal.png" alt="Halal certified" className="absolute bottom-4 right-4 w-20 h-20 rounded-full border-2 border-[#D8AA3E] bg-black p-1 object-contain" />
       </div>
       <div className="space-y-5 text-[17px] leading-8 text-white/85">
