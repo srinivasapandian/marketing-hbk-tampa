@@ -72,12 +72,20 @@ const Catering = () => (
       </div>
     </section>
 
+    {/* Catering enquiry form (same form and SMTP as the contact page) */}
+    <section className="pb-10">
+      <div className="text-center px-6">
+        <Heading eyebrow="Plan your event">Catering Enquiry</Heading>
+      </div>
+      <ContactSection hideHeading />
+    </section>
+
     {/* Regular menu (no prices) */}
     <section id="catering-menu" className="py-20 px-6 max-w-[1200px] mx-auto">
       <Heading eyebrow="Our regular menu">Catering Menu</Heading>
-      <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="mt-14 columns-1 md:columns-2 lg:columns-3 gap-6">
         {menuCategories.map((category) => (
-          <div key={category.name} className="rounded-[28px] border border-white/10 bg-white/[0.03] p-7">
+          <div key={category.name} className="break-inside-avoid mb-6 rounded-[28px] border border-white/10 bg-white/[0.03] p-7">
             <h3 className="text-xl font-bold text-[#D8AA3E] mb-4" style={serif}>{category.name}</h3>
             {category.sections.map((section, si) => (
               <div key={section.name || si} className={si > 0 ? 'mt-4' : ''}>
@@ -93,6 +101,11 @@ const Catering = () => (
       <p className="mt-10 text-center text-lg text-[#D8AA3E] italic" style={serif}>
         We do all varieties of customizations on customer request.
       </p>
+      <div className="mt-6 text-center">
+        <Link to="/menu" className="inline-flex items-center gap-2 rounded-full border border-white/25 font-semibold px-8 py-3 hover:border-[#D8AA3E] transition">
+          View Full Menu <ArrowRight size={18} />
+        </Link>
+      </div>
     </section>
 
     {/* How it works */}
@@ -119,13 +132,6 @@ const Catering = () => (
       </div>
     </section>
 
-    {/* Catering enquiry form (same form and SMTP as the contact page) */}
-    <section className="pb-10">
-      <div className="text-center px-6">
-        <Heading eyebrow="Plan your event">Catering Enquiry</Heading>
-      </div>
-      <ContactSection hideHeading />
-    </section>
   </div>
 );
 
