@@ -6,10 +6,9 @@ import siteData from '../data/siteData.json';
 import { Button } from '../components/common/Button';
 import { Card } from '../components/common/Card';
 import Faq from '../components/Faq';
+import FoodCombo from '../components/FoodCombo';
+import { ORDER_URL } from '../utils/constants';
 
-import gallery1 from '../asserts/gallery1.jpg';
-import gallery2 from '../asserts/gallery2.jpg';
-import gallery3 from '../asserts/gallery3.jpg';
 import gallery4 from '../asserts/gallery4.png';
 import gallery5 from '../asserts/gallery5.png';
 import logo35 from '../asserts/35logo.png';
@@ -17,33 +16,32 @@ import logoMain from '../asserts/house-of-biryani.png';
 import heroBanner from '../asserts/banner-2.png';
 import vector from '../asserts/Vector.png';
 
-import menu1 from '../asserts/menu1.jpg';
-import menu2 from '../asserts/menu2.jpg';
-import menu3 from '../asserts/menu3.jpg';
-import menu4 from '../asserts/menu4.jpg';
+import menuSoup from '../asserts/homepage-menuimages/tomato-soup.png';
+import menuSamosa from '../asserts/homepage-menuimages/samosas.png';
+import menuKebab from '../asserts/homepage-menuimages/seekh-kebabs.png';
+import menuBiryani from '../asserts/homepage-menuimages/chicken-biryani.png';
 
-const menuImageMap = {
-  '/menu1.jpg': menu1,
-  '/menu2.jpg': menu2,
-  '/menu3.jpg': menu3,
-  '/menu4.jpg': menu4,
-};
+import lambChops from '../asserts/gall/gallery-2.jpg';
+import kebabPlatter from '../asserts/gall/gallery-3.jpg';
+import tandooriChicken from '../asserts/gall/gallery-5.jpg';
+import roseSorbet from '../asserts/gall/gallery-6.jpg';
 
 const menuCards = [
-  { name: 'Appetizers', image: menu1 },
-  { name: 'Ethnic Entrees', image: menu2 },
-  { name: 'Beverages', image: menu4 },
-  { name: 'Desserts', image: menu3 },
+  { name: 'Soups', image: menuSoup },
+  { name: 'Appetizers', image: menuSamosa },
+  { name: 'Kebabs', image: menuKebab },
+  { name: 'Biryanis & Entrees', image: menuBiryani },
 ];
 
-const baseGalleryItemsRaw = [
-  { id: 1, image: gallery1, name: 'South Indian Thali' },
-  { id: 2, image: gallery2, name: 'Chicken Tikka Kebab' },
-  { id: 3, image: gallery3, name: 'Paneer Butter Masala' },
+// Biryani and fish stay; the rest are the new gallery photos. Order differs per branch.
+const baseGalleryItems = [
+  { id: 1, image: tandooriChicken, name: 'Tandoori Chicken' },
+  { id: 2, image: roseSorbet, name: 'Rose Petal Sorbet' },
+  { id: 3, image: lambChops, name: 'Grilled Lamb Chops' },
   { id: 4, image: gallery4, name: 'Mutton Biryani' },
-  { id: 5, image: gallery5, name: 'Fish Fry' },
+  { id: 5, image: kebabPlatter, name: 'Assorted Kebab Platter' },
+  { id: 6, image: gallery5, name: 'Fish Fry' },
 ];
-const baseGalleryItems = [...baseGalleryItemsRaw.slice(1), ...baseGalleryItemsRaw.slice(0, 1)];
 
 // 3 copies: left-buffer | visible | right-buffer — enables seamless infinite wrap
 const galleryItems = [
@@ -217,8 +215,8 @@ const Home = () => {
             className="w-full h-full object-cover scale-105"
           />
           {/* Background Overlays for better readability and depth */}
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-black" />
+          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#1a130e]" />
         </div>
 
         <div className="relative z-10 w-full text-center px-6 max-w-7xl mx-auto">
@@ -251,7 +249,7 @@ const Home = () => {
             </h1>
 
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mt-2">
-              <a href="https://example.com/order-online" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 rounded-full border border-[#D8AA3E] bg-black/35 px-4 md:px-5 py-2 md:py-2 font-['Playfair_Display'] text-base md:text-[16px] leading-none text-white/95 hover:bg-black/50 transition-all">
+              <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 rounded-full border border-[#D8AA3E] bg-black/35 px-4 md:px-5 py-2 md:py-2 font-['Playfair_Display'] text-base md:text-[16px] leading-none text-white/95 hover:bg-black/50 transition-all">
                 <span>Order Online</span>
                 <span className="flex items-center justify-center rounded-full border border-[#D8AA3E] w-6 h-6 md:w-7 md:h-7">
                   <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#E1B443]" />
@@ -291,15 +289,15 @@ const Home = () => {
               className="absolute -left-6 md:-left-12 top-6 md:top-12 w-full max-w-[500px] h-[320px] md:h-[520px] z-0 pointer-events-none rounded-[24px] md:rounded-[30px] border border-[#D8AA3E]"
             />
 
-            <motion.img
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              src="/about.png"
-              alt="About Our Restaurant"
-              className="relative z-10 rounded-[24px] md:rounded-[30px] shadow-2xl w-full max-w-[500px] h-[320px] md:h-[520px] object-cover"
-            />
+              className="relative z-10"
+            >
+              <FoodCombo className="rounded-[24px] md:rounded-[30px] shadow-2xl w-full max-w-[500px] h-[320px] md:h-[520px]" />
+            </motion.div>
           </div>
 
           <motion.div
@@ -328,11 +326,11 @@ const Home = () => {
 
             <div className="space-y-3">
               <h3 className="text-xl md:text-2xl font-serif leading-tight text-white/92">
-                Authentic South Indian <br />
-                Non-Veg Flavors in the USA
+                Authentic Indian Cuisine <br />
+                in the USA
               </h3>
               <p className="text-white/75 leading-relaxed font-serif text-sm md:text-base">
-                Our restaurant was created with a passion for sharing the rich and bold flavors of South Indian non-vegetarian cuisine with the community in the United States. Inspired by traditional recipes from Tamil Nadu and other South Indian regions, we prepare every dish using authentic spices, fresh ingredients, and time-honored cooking techniques. Our goal is to provide a warm dining experience where guests can enjoy delicious food, great service, and the true taste of South India.
+                Our restaurant was created with a passion for sharing the rich and bold flavors of Indian cuisine with the community in the United States. Inspired by traditional Hyderabadi recipes and other South Indian flavors, we prepare every dish using authentic spices, fresh ingredients, and time-honored cooking techniques. Our goal is to provide a warm dining experience where guests can enjoy delicious food, great service, and the true taste of India.
               </p>
             </div>
 
@@ -345,7 +343,7 @@ const Home = () => {
       </section>
 
       {/* Menu Section */}
-      <section id="menu" className="py-20 bg-black">
+      <section id="menu" className="py-20 bg-gradient-to-b from-[#2a1d14] to-[#1f1610]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="title-with-line text-5xl md:text-6xl" style={{ fontFamily: 'Constantia, serif' }}>Menu</h2>
@@ -371,7 +369,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="services" className="py-20 px-6">
+      <section id="services" className="py-20 px-6 bg-[#1a130e]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-5 mb-14">
             <div className="flex flex-row items-end justify-center gap-4">
@@ -381,7 +379,7 @@ const Home = () => {
               </div>
             </div>
             <p className="text-white/80 max-w-3xl mx-auto font-serif text-base md:text-lg leading-relaxed">
-              We serve authentic South Indian non-veg dishes prepared with fresh ingredients, <br className="hidden md:block" /> traditional spices, and a commitment to quality and great hospitality.
+              We serve flavorful Indian dishes prepared with fresh ingredients, <br className="hidden md:block" /> traditional spices, and a commitment to quality and great hospitality.
             </p>
           </div>
 
@@ -415,7 +413,7 @@ const Home = () => {
 
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-20 bg-black overflow-hidden">
+      <section id="gallery" className="py-20 bg-gradient-to-b from-[#1f1610] to-[#2a1d14] overflow-hidden">
         <div className="w-full">
           <div className="flex items-end gap-4 mb-14 justify-center px-4">
             <h2 className="title-with-line text-5xl md:text-7xl tracking-[0.12em] text-center" style={{ fontFamily: "'Playfair Display', serif", fontWeight: 400 }}>Gallery</h2>

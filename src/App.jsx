@@ -10,7 +10,7 @@ function App() {
       <ScrollToHash />
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow bg-black">
+        <main className="flex-grow bg-[#1a130e]">
           <AppRoutes />
         </main>
         <Footer />

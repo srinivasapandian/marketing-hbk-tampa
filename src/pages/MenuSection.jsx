@@ -141,7 +141,7 @@ export default function MenuSection({ standalone = false }) {
   const shown = active === ALL ? menuCategories : [menuCategories[active]];
 
   return (
-    <section id="menu" className="bg-black text-white px-4 md:px-6 py-8 min-h-[70vh]">
+    <section id="menu" className="bg-[#1a130e] text-white px-4 md:px-6 py-8 min-h-[70vh]">
       <div className="max-w-[1280px] mx-auto">
         {/* Category tabs */}
         <div className="flex items-center gap-2 rounded-full border border-white/10 bg-[#161616] p-2">
