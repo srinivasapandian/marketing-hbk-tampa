@@ -19,7 +19,7 @@ export const CONTACT_INFO = {
   phone: "(732) 474-0463",
   email: "hbk08854@gmail.com",
   address: "1372 Centennial Ave, Piscataway, NJ 08854",
-  hours: "Temporarily closed"
+  hours: "Mon–Thu 11:30 AM–2:30 PM, 5:30–10 PM · Fri–Sat 11:30 AM–12 AM · Sun 11:30 AM–10 PM"
 };
 
 // Contact form -> Maghil SMTP email API (POST /api/send-email-smtp).
@@ -30,28 +30,20 @@ export const SMTP_CONTACT_PURPOSE = "HBK-PISCATAWAY-CONTACT";
 // reCAPTCHA v2 site key paired with the SMTP API's secret key; the checkbox is hidden while empty.
 export const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
 
-// Google Business Profile lists this location as temporarily closed; set to false once it reopens
-// and restore the weekly hours below from the listing.
-export const TEMPORARILY_CLOSED = true;
+export const TEMPORARILY_CLOSED = false;
 
+// Weekly hours supplied by the restaurant.
+const WEEKDAY = ['11:30 AM – 02:30 PM', '05:30 PM – 10:00 PM'];
+const LATE = ['11:30 AM – 12:00 AM'];
 export const BUSINESS_HOURS = {
   Store: [
-    { day: 'Monday', closed: true },
-    { day: 'Tuesday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 10:30 PM'] },
-    { day: 'Wednesday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 10:30 PM'] },
-    { day: 'Thursday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 10:30 PM'] },
-    { day: 'Friday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 11:00 PM'] },
-    { day: 'Saturday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 11:00 PM'] },
-    { day: 'Sunday', slots: ['11:30 AM – 03:00 PM', '05:30 PM – 10:30 PM'] },
-  ],
-  Online: [
-    { day: 'Monday', closed: true },
-    { day: 'Tuesday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:00 PM'] },
-    { day: 'Wednesday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:00 PM'] },
-    { day: 'Thursday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:00 PM'] },
-    { day: 'Friday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:30 PM'] },
-    { day: 'Saturday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:30 PM'] },
-    { day: 'Sunday', slots: ['11:30 AM – 02:30 PM', '05:30 PM – 10:00 PM'] },
+    { day: 'Monday', slots: WEEKDAY },
+    { day: 'Tuesday', slots: WEEKDAY },
+    { day: 'Wednesday', slots: WEEKDAY },
+    { day: 'Thursday', slots: WEEKDAY },
+    { day: 'Friday', slots: LATE },
+    { day: 'Saturday', slots: LATE },
+    { day: 'Sunday', slots: ['11:30 AM – 10:00 PM'] },
   ],
 };
 
