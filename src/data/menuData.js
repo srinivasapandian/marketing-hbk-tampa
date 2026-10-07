@@ -55,7 +55,7 @@ export const menuCategories = [
           { id: 'appetizers-28', name: 'Chicken Sukka', price: '$14.99', description: 'Chicken dry-roasted with coconut, black pepper and aromatic spices.' },
           { id: 'appetizers-29', name: 'Chicken 65', price: '$14.99', description: 'Spicy deep-fried chicken bites tossed with curry leaves and green chillies.' },
           { id: 'appetizers-30', name: 'Ginger Chicken', price: '$14.99', description: 'Boneless chicken stir-fried with fresh ginger, garlic and spring onions.' },
-          { id: 'appetizers-31', name: 'Pepper Chicken Fry', price: '$14.99', description: 'Chicken stir-fried with crushed black pepper, onions and curry leaves.' },
+          { id: 'appetizers-31', name: 'Pepper Chicken Fry', price: '$14.99', description: 'Chicken stir-fried with cut long hot chili, onions and curry leaves.' },
           { id: 'appetizers-32', name: 'Chicken Lollipops (5)', price: '$15.99', description: 'Frenched chicken wings marinated in spices and fried until crisp.' },
           { id: 'appetizers-33', name: 'Chicken Majestic', price: '$14.99', description: 'Chicken strips fried and tossed in a yogurt, green chilli and curry leaf seasoning.' },
           { id: 'appetizers-34', name: 'Cilantro Chicken', price: '$14.99', description: 'Boneless chicken tossed in a fresh cilantro, green chilli and garlic sauce.' },
