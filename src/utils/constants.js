@@ -3,8 +3,8 @@ export const PRIMARY_COLOR = "#FFD700"; // Gold
 export const SECONDARY_COLOR = "#000000"; // Black
 export const ACCENT_COLOR = "#FFFFFF"; // White
 
-// Dummy details - replace once the Cherry Hill location is confirmed
-export const ORDER_URL = "https://example.com/order-online";
+// Online ordering is served by Clover. Swap in the location's own Clover ordering link once it is confirmed.
+export const ORDER_URL = "https://www.clover.com/";
 
 export const SOCIAL_LINKS = {
   facebook: "https://www.facebook.com/hbkcherryhill",
@@ -43,3 +43,9 @@ export const BUSINESS_HOURS = {
     { day: 'Sunday', slots: ['11:30 AM – 03:00 PM', '05:00 PM – 10:00 PM'] },
   ],
 };
+
+// Shown under the business hours.
+export const KITCHEN_NOTES = [
+  'Kitchen closes 15 minutes before closing time, Monday – Saturday.',
+  'On Sundays, the kitchen closes 45 minutes before closing time (night only).',
+];

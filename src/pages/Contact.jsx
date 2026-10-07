@@ -2,7 +2,7 @@ import ContactSection from '../components/ContactSection';
 import heroImg from '../asserts/banner-2.png';
 
 const Contact = () => (
-  <div className="bg-black text-white">
+  <div className="bg-[#1a130e] text-white">
     <section className="relative h-[300px] md:h-[436px] overflow-hidden flex items-center justify-center">
       <img src={heroImg} alt="" className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-black/65" />

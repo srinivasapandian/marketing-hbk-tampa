@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Phone, Users, UtensilsCrossed, ChefHat } from 'lucide-react';
 import { motion } from 'motion/react';
 import heroImg from '../asserts/banner-3.png';
+import ContactSection from '../components/ContactSection';
+import { menuCategories } from '../data/menuData';
 
 const offers = [
-  { title: 'Wedding Catering', Icon: Users, text: 'Make your special day unforgettable. We provide full wedding catering with live biryani stations, appetizer spreads, and a dedicated service team.' },
+  { title: 'Wedding Catering', Icon: Users, text: 'Make your special day unforgettable. We provide full wedding catering with appetizer spreads, a wide variety of main courses, and a dedicated service team.' },
   { title: 'Corporate Events', Icon: UtensilsCrossed, text: 'Impress your clients and colleagues with a premium South Asian spread — from working lunches to large-scale company celebrations.' },
   { title: 'Private Parties', Icon: ChefHat, text: 'Birthday, anniversary, graduation — whatever the occasion, we bring the feast to you with customizable menus and on-site chefs.' },
 ];
@@ -25,7 +27,7 @@ const Heading = ({ eyebrow, children }) => (
 );
 
 const Catering = () => (
-  <div className="bg-[#0a0908] text-white">
+  <div className="bg-[#1a130e] text-white">
     {/* Hero */}
     <section className="relative border-b border-[#D8AA3E] overflow-hidden">
       <img src={heroImg} alt="" className="absolute inset-0 w-full h-full object-cover" />
@@ -44,7 +46,7 @@ const Catering = () => (
           Authentic halal South Asian catering for weddings, corporate events, private parties, and everything in between.
         </p>
         <div className="mt-8 flex flex-wrap gap-4 justify-center">
-          <Link to="/contact-us" className="inline-flex items-center gap-2 rounded-full bg-[#D8AA3E] text-black font-semibold px-8 py-3.5 hover:brightness-110 transition">
+          <Link to="/catering#contact-us" className="inline-flex items-center gap-2 rounded-full bg-[#D8AA3E] text-black font-semibold px-8 py-3.5 hover:brightness-110 transition">
             <Phone size={18} /> Request a Quote
           </Link>
           <Link to="/menu" className="inline-flex items-center gap-2 rounded-full border border-white/25 font-semibold px-8 py-3.5 hover:border-[#D8AA3E] transition">
@@ -70,6 +72,29 @@ const Catering = () => (
       </div>
     </section>
 
+    {/* Regular menu (no prices) */}
+    <section id="catering-menu" className="py-20 px-6 max-w-[1200px] mx-auto">
+      <Heading eyebrow="Our regular menu">Catering Menu</Heading>
+      <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {menuCategories.map((category) => (
+          <div key={category.name} className="rounded-[28px] border border-white/10 bg-white/[0.03] p-7">
+            <h3 className="text-xl font-bold text-[#D8AA3E] mb-4" style={serif}>{category.name}</h3>
+            {category.sections.map((section, si) => (
+              <div key={section.name || si} className={si > 0 ? 'mt-4' : ''}>
+                {section.name && <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50 mb-2">{section.name}</p>}
+                <ul className="space-y-1.5 text-white/80 text-[15px] leading-snug">
+                  {section.items.map((item) => (<li key={item.id}>{item.name}</li>))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+      <p className="mt-10 text-center text-lg text-[#D8AA3E] italic" style={serif}>
+        We do all varieties of customizations on customer request.
+      </p>
+    </section>
+
     {/* How it works */}
     <section className="py-20 px-6 max-w-[1200px] mx-auto">
       <Heading eyebrow="Simple process">How It Works</Heading>
@@ -78,7 +103,7 @@ const Catering = () => (
           <div key={s.n} className="text-center">
             <div className="relative flex items-center justify-center">
               {i < steps.length - 1 && <div className="hidden md:block absolute left-1/2 w-full h-px bg-[#D8AA3E]/30" />}
-              <div className="relative w-[70px] h-[70px] rounded-full border border-[#D8AA3E]/60 bg-[#0a0908] flex items-center justify-center text-[#D8AA3E] text-lg font-bold" style={serif}>
+              <div className="relative w-[70px] h-[70px] rounded-full border border-[#D8AA3E]/60 bg-[#1a130e] flex items-center justify-center text-[#D8AA3E] text-lg font-bold" style={serif}>
                 {s.n}
               </div>
             </div>
@@ -88,10 +113,18 @@ const Catering = () => (
         ))}
       </div>
       <div className="mt-14 text-center">
-        <Link to="/contact-us" className="inline-flex items-center gap-2 rounded-full bg-[#D8AA3E] text-black font-semibold px-8 py-3.5 hover:brightness-110 transition">
+        <Link to="/catering#contact-us" className="inline-flex items-center gap-2 rounded-full bg-[#D8AA3E] text-black font-semibold px-8 py-3.5 hover:brightness-110 transition">
           Request a Quote <ArrowRight size={18} />
         </Link>
       </div>
+    </section>
+
+    {/* Catering enquiry form (same form and SMTP as the contact page) */}
+    <section className="pb-10">
+      <div className="text-center px-6">
+        <Heading eyebrow="Plan your event">Catering Enquiry</Heading>
+      </div>
+      <ContactSection hideHeading />
     </section>
   </div>
 );
