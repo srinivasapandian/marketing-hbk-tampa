@@ -114,7 +114,7 @@ const About = () => (
         ))}
       </div>
       <div className="mt-12 text-center">
-        <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#FFD700] text-black font-semibold px-8 py-3.5 hover:brightness-110 transition">
+        <a href={ORDER_URL} target={ORDER_URL === "#" ? undefined : "_blank"} rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#FFD700] text-black font-semibold px-8 py-3.5 hover:brightness-110 transition">
           Order Online <ArrowRight size={18} />
         </a>
       </div>

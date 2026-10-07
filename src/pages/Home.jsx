@@ -253,7 +253,7 @@ const Home = () => {
             </h1>
 
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 mt-2">
-              <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 rounded-full border border-[#D8AA3E] bg-black/35 px-4 md:px-5 py-2 md:py-2 font-['Playfair_Display'] text-base md:text-[16px] leading-none text-white/95 hover:bg-black/50 transition-all">
+              <a href={ORDER_URL} target={ORDER_URL === "#" ? undefined : "_blank"} rel="noopener noreferrer" className="group flex items-center gap-2 rounded-full border border-[#D8AA3E] bg-black/35 px-4 md:px-5 py-2 md:py-2 font-['Playfair_Display'] text-base md:text-[16px] leading-none text-white/95 hover:bg-black/50 transition-all">
                 <span>Order Online</span>
                 <span className="flex items-center justify-center rounded-full border border-[#D8AA3E] w-6 h-6 md:w-7 md:h-7">
                   <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#E1B443]" />

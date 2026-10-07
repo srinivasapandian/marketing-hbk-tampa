@@ -69,7 +69,7 @@ const Footer = () => {
               {quickLinks.map((l) => (
                 <li key={l.name}>
                   {l.external ? (
-                    <a href={ORDER_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#D8AA3E] transition-colors">{l.name}</a>
+                    <a href={ORDER_URL} target={ORDER_URL === "#" ? undefined : "_blank"} rel="noopener noreferrer" className="hover:text-[#D8AA3E] transition-colors">{l.name}</a>
                   ) : (
                     <Link to={l.path} className="hover:text-[#D8AA3E] transition-colors">{l.name}</Link>
                   )}
