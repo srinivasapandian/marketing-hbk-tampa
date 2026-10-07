@@ -62,7 +62,7 @@ const Navbar = () => {
 
         <a
           href={ORDER_URL}
-          target="_blank"
+          target={ORDER_URL === "#" ? undefined : "_blank"}
           rel="noopener noreferrer"
           className="hidden lg:inline-block rounded-full border border-[#D8AA3E] px-6 py-2 uppercase text-[15px] font-bold text-white [font-family:'Playfair_Display',serif] hover:bg-[#D8AA3E]/10 transition-colors"
         >
@@ -125,7 +125,7 @@ const Navbar = () => {
 
               <a
                 href={ORDER_URL}
-                target="_blank"
+                target={ORDER_URL === "#" ? undefined : "_blank"}
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
                 className="mt-8 block w-full rounded-lg bg-[#D8AA3E] py-3 text-center uppercase text-[13px] font-bold text-black tracking-wider"
