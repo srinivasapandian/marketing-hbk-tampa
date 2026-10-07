@@ -3,9 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import logoMain from '../../asserts/house-of-biryani.png';
-import { CITY_LABEL } from '../../utils/constants';
-
-const ORDER_URL = 'https://example.com/order-online';
+import { CITY_LABEL, ORDER_URL } from '../../utils/constants';
 
 const navLinks = [
   { name: 'Home', path: '/' },

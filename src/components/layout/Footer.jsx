@@ -3,7 +3,7 @@ import { MapPin, Phone, Mail, Facebook, Instagram, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logoMain from '../../asserts/house-of-biryani.png';
 import footerLogo from '../../asserts/footer.png';
-import { CONTACT_INFO, SOCIAL_LINKS, BUSINESS_HOURS, ORDER_URL } from '../../utils/constants';
+import { CONTACT_INFO, SOCIAL_LINKS, BUSINESS_HOURS, KITCHEN_NOTES, ORDER_URL } from '../../utils/constants';
 
 const quickLinks = [
   { name: 'Home', path: '/' },
@@ -26,7 +26,7 @@ const Footer = () => {
   const [tab, setTab] = useState('Store');
 
   return (
-    <footer className="bg-black pt-10 pb-6 px-6 text-white font-sans">
+    <footer className="bg-[#120d0a] pt-10 pb-6 px-6 text-white font-sans">
       <div className="max-w-[1280px] mx-auto">
         <div
           className="h-[2px] w-full bg-center bg-no-repeat bg-contain opacity-95 mb-12"
@@ -45,14 +45,15 @@ const Footer = () => {
             <h4 className="mt-6 text-[13px] font-bold text-[#D8AA3E] uppercase tracking-[0.2em] mb-2">Follow Us</h4>
             <div className="h-[2px] w-10 bg-[#D8AA3E] mb-4" />
             <div className="flex gap-3">
-              {[{ Icon: Facebook, label: 'Facebook', href: SOCIAL_LINKS.facebook }, { Icon: Instagram, label: 'Instagram', href: SOCIAL_LINKS.instagram }].map(({ Icon, label, href }) => (
+              {[{ Icon: Facebook, label: 'Facebook', href: SOCIAL_LINKS.facebook, color: '#1877F2' }, { Icon: Instagram, label: 'Instagram', href: SOCIAL_LINKS.instagram, color: '#E4405F' }].map(({ Icon, label, href, color }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center text-white/80 hover:text-[#D8AA3E] hover:border-[#D8AA3E] transition-colors"
+                  style={{ color, borderColor: color }}
+                  className="w-11 h-11 rounded-full border-2 flex items-center justify-center hover:opacity-80 transition-opacity"
                 >
                   <Icon size={18} />
                 </a>
@@ -117,6 +118,9 @@ const Footer = () => {
                   )}
                 </li>
               ))}
+            </ul>
+            <ul className="mt-4 space-y-1.5 text-[13px] text-white/60 leading-snug">
+              {KITCHEN_NOTES.map((n) => (<li key={n}>• {n}</li>))}
             </ul>
           </div>
         </div>
