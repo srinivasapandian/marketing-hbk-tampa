@@ -8,6 +8,8 @@ import menuSoup from '../asserts/homepage-menuimages/tomato-soup.png';
 import menuSamosa from '../asserts/homepage-menuimages/samosas.png';
 import menuKebab from '../asserts/homepage-menuimages/seekh-kebabs.png';
 import menuBiryani from '../asserts/homepage-menuimages/chicken-biryani.png';
+import menuDessert from '../asserts/homepage-menuimages/desserts.png';
+import menuLassi from '../asserts/homepage-menuimages/mango-lassi.png';
 
 const promises = [
   { title: 'Premium Quality', icon: '/premiuim%20quality.png', text: 'Only the finest basmati rice, hand-picked spices, and fresh ingredients make it into our kitchen.' },
@@ -22,6 +24,8 @@ const dishes = [
   { name: 'Appetizers', image: menuSamosa },
   { name: 'Kebabs', image: menuKebab },
   { name: 'Biryanis & Entrees', image: menuBiryani },
+  { name: 'Desserts', image: menuDessert },
+  { name: 'Beverages', image: menuLassi },
 ];
 
 const SectionTitle = ({ eyebrow, children, center = true }) => (
@@ -64,7 +68,7 @@ const About = () => (
     {/* Story */}
     <section className="py-20 px-6 max-w-[1200px] mx-auto grid lg:grid-cols-2 gap-14 items-center">
       <div className="relative">
-        <FoodCombo className="w-full h-[380px] md:h-[560px] rounded-[28px]" />
+        <FoodCombo className="w-full aspect-video rounded-[28px]" />
         <img src="/halal.png" alt="Halal certified" className="absolute bottom-4 right-4 w-20 h-20 rounded-full border-2 border-[#D8AA3E] bg-black p-1 object-contain" />
       </div>
       <div className="space-y-5 text-[17px] leading-8 text-white/85">
@@ -98,7 +102,7 @@ const About = () => (
     {/* Signature dishes */}
     <section className="py-20 px-6 max-w-[1200px] mx-auto">
       <SectionTitle eyebrow="From our kitchen">Signature Dishes</SectionTitle>
-      <div className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="mt-14 grid grid-cols-2 lg:grid-cols-3 gap-5">
         {dishes.map((d) => (
           <Link key={d.name} to="/menu" className="group rounded-[24px] overflow-hidden border border-white/10 bg-[#111] block">
             <img src={d.image} alt={d.name} className="w-full h-40 md:h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
