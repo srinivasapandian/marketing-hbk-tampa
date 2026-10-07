@@ -359,8 +359,8 @@ const Home = () => {
                 to="/menu"
                 className="group rounded-[20px] overflow-hidden border border-white/10 bg-[#1a130e] block"
               >
-                <div className="aspect-[3/2] bg-[#120d0a] overflow-hidden">
-                  <img src={c.image} alt={c.name} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                <div className="aspect-[3/2] bg-gradient-to-b from-[#2a1d14] to-[#1f1610] overflow-hidden p-4">
+                  <img src={c.image} alt={c.name} className="w-full h-full object-contain drop-shadow-[0_10px_16px_rgba(0,0,0,0.5)] group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="px-5 py-4 flex items-center justify-between">
                   <h3 className="text-white text-xl" style={{ fontFamily: "'Playfair Display', serif" }}>{c.name}</h3>

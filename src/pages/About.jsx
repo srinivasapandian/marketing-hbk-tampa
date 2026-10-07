@@ -105,7 +105,7 @@ const About = () => (
       <div className="mt-14 grid grid-cols-2 lg:grid-cols-3 gap-5">
         {dishes.map((d) => (
           <Link key={d.name} to="/menu" className="group rounded-[24px] overflow-hidden border border-white/10 bg-[#111] block">
-            <img src={d.image} alt={d.name} className="w-full h-40 md:h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div className="h-40 md:h-56 p-4 bg-gradient-to-b from-[#2a1d14] to-[#1f1610]"><img src={d.image} alt={d.name} className="w-full h-full object-contain drop-shadow-[0_10px_16px_rgba(0,0,0,0.5)] group-hover:scale-105 transition-transform duration-500" /></div>
             <div className="py-5 text-center">
               <h3 className="font-bold" style={{ fontFamily: 'Constantia, serif' }}>{d.name}</h3>
               <span className="mt-2 inline-flex items-center gap-1 text-[#D8AA3E] text-sm font-bold uppercase tracking-wider">View more <ArrowRight size={14} /></span>
