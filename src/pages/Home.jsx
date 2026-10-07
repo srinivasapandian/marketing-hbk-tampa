@@ -20,6 +20,8 @@ import menuSoup from '../asserts/homepage-menuimages/tomato-soup.png';
 import menuSamosa from '../asserts/homepage-menuimages/samosas.png';
 import menuKebab from '../asserts/homepage-menuimages/seekh-kebabs.png';
 import menuBiryani from '../asserts/homepage-menuimages/chicken-biryani.png';
+import menuDessert from '../asserts/homepage-menuimages/desserts.png';
+import menuLassi from '../asserts/homepage-menuimages/mango-lassi.png';
 
 import lambChops from '../asserts/gall/gallery-2.jpg';
 import kebabPlatter from '../asserts/gall/gallery-3.jpg';
@@ -31,6 +33,8 @@ const menuCards = [
   { name: 'Appetizers', image: menuSamosa },
   { name: 'Kebabs', image: menuKebab },
   { name: 'Biryanis & Entrees', image: menuBiryani },
+  { name: 'Desserts', image: menuDessert },
+  { name: 'Beverages', image: menuLassi },
 ];
 
 // Biryani and fish stay; the rest are the new gallery photos. Order differs per branch.
@@ -215,8 +219,8 @@ const Home = () => {
             className="w-full h-full object-cover scale-105"
           />
           {/* Background Overlays for better readability and depth */}
-          <div className="absolute inset-0 bg-black/30" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#1a130e]" />
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-[#1a130e]" />
         </div>
 
         <div className="relative z-10 w-full text-center px-6 max-w-7xl mx-auto">
@@ -286,7 +290,7 @@ const Home = () => {
             {/* Decorative box behind */}
             <div
               aria-hidden="true"
-              className="absolute -left-6 md:-left-12 top-6 md:top-12 w-full max-w-[500px] h-[320px] md:h-[520px] z-0 pointer-events-none rounded-[24px] md:rounded-[30px] border border-[#D8AA3E]"
+              className="absolute -left-4 md:-left-8 top-4 md:top-8 w-full h-full z-0 pointer-events-none rounded-[24px] md:rounded-[30px] border border-[#D8AA3E]"
             />
 
             <motion.div
@@ -296,7 +300,7 @@ const Home = () => {
               transition={{ duration: 0.8 }}
               className="relative z-10"
             >
-              <FoodCombo className="rounded-[24px] md:rounded-[30px] shadow-2xl w-full max-w-[500px] h-[320px] md:h-[520px]" />
+              <FoodCombo className="rounded-[24px] md:rounded-[30px] shadow-2xl w-full aspect-video" />
             </motion.div>
           </div>
 
@@ -348,19 +352,20 @@ const Home = () => {
           <div className="text-center mb-12">
             <h2 className="title-with-line text-5xl md:text-6xl" style={{ fontFamily: 'Constantia, serif' }}>Menu</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[960px] mx-auto">
             {menuCards.map((c) => (
               <Link
                 key={c.name}
                 to="/menu"
-                className="group relative h-[420px] md:h-[560px] rounded-[28px] overflow-hidden border border-white/10 block"
+                className="group rounded-[20px] overflow-hidden border border-white/10 bg-[#1a130e] block"
               >
-                <img src={c.image} alt={c.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-7 text-left">
-                  <h3 className="text-white text-3xl mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>{c.name}</h3>
-                  <span className="inline-flex items-center gap-2 text-[#FFD700]" style={{ fontFamily: "'Playfair Display', serif" }}>
-                    View More <ArrowRight size={16} />
+                <div className="aspect-[3/2] bg-[#120d0a] overflow-hidden">
+                  <img src={c.image} alt={c.name} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="px-5 py-4 flex items-center justify-between">
+                  <h3 className="text-white text-xl" style={{ fontFamily: "'Playfair Display', serif" }}>{c.name}</h3>
+                  <span className="inline-flex items-center gap-1.5 text-[#FFD700] text-sm" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    View More <ArrowRight size={14} />
                   </span>
                 </div>
               </Link>
