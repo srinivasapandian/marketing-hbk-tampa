@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Facebook, Instagram, Star } from 'lucide-react';
+import { MapPin, Phone, Mail, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logoMain from '../../asserts/house-of-biryani.png';
 import footerLogo from '../../asserts/footer.png';
+import facebookIcon from '../../asserts/facebook.png';
+import instagramIcon from '../../asserts/instagram.png';
 import { CONTACT_INFO, SOCIAL_LINKS, BUSINESS_HOURS, KITCHEN_NOTES, ORDER_URL } from '../../utils/constants';
 
 const quickLinks = [
@@ -45,17 +47,16 @@ const Footer = () => {
             <h4 className="mt-6 text-[13px] font-bold text-[#D8AA3E] uppercase tracking-[0.2em] mb-2">Follow Us</h4>
             <div className="h-[2px] w-10 bg-[#D8AA3E] mb-4" />
             <div className="flex gap-3">
-              {[{ Icon: Facebook, label: 'Facebook', href: SOCIAL_LINKS.facebook, color: '#1877F2' }, { Icon: Instagram, label: 'Instagram', href: SOCIAL_LINKS.instagram, color: '#E4405F' }].map(({ Icon, label, href, color }) => (
+              {[{ icon: facebookIcon, label: 'Facebook', href: SOCIAL_LINKS.facebook }, { icon: instagramIcon, label: 'Instagram', href: SOCIAL_LINKS.instagram }].map(({ icon, label, href }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  style={{ color, borderColor: color }}
-                  className="w-11 h-11 rounded-full border-2 flex items-center justify-center hover:opacity-80 transition-opacity"
+                  className="w-11 h-11 flex items-center justify-center hover:scale-110 transition-transform"
                 >
-                  <Icon size={18} />
+                  <img src={icon} alt={label} className="w-full h-full object-contain" />
                 </a>
               ))}
             </div>
