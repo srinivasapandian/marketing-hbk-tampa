@@ -300,7 +300,7 @@ const Home = () => {
               transition={{ duration: 0.8 }}
               className="relative z-10"
             >
-              <FoodCombo className="rounded-[24px] md:rounded-[30px] shadow-2xl w-full aspect-video" />
+              <FoodCombo excludeSouthIndian className="rounded-[24px] md:rounded-[30px] shadow-2xl w-full aspect-video" />
             </motion.div>
           </div>
 
