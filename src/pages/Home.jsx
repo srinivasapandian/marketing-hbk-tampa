@@ -23,10 +23,16 @@ import menuBiryani from '../asserts/homepage-menuimages/chicken-biryani.png';
 import menuDessert from '../asserts/homepage-menuimages/desserts.png';
 import menuLassi from '../asserts/homepage-menuimages/mango-lassi.png';
 
-import lambChops from '../asserts/gall/gallery-2.jpg';
 import kebabPlatter from '../asserts/gall/gallery-3.jpg';
-import tandooriChicken from '../asserts/gall/gallery-5.jpg';
-import roseSorbet from '../asserts/gall/gallery-6.jpg';
+import chapliKebabs from '../asserts/gall/actual-chapli-kebabs.jpg';
+import goatBiryani from '../asserts/gall/actual-goat-fry-biryani.jpg';
+import tandooriChicken from '../asserts/gall/actual-tandoori-chicken.jpg';
+import eggBiryani from '../asserts/gall/actual-egg-biryani.jpg';
+import chickenPakora from '../asserts/gall/actual-chicken-pakora.jpg';
+import keemaBiryani from '../asserts/gall/actual-keema-biryani.jpg';
+import chickenSukka from '../asserts/gall/actual-chicken-sukka.jpg';
+import lotusRoot from '../asserts/gall/actual-lotus-root-manchurian.jpg';
+import garlicNaan from '../asserts/gall/actual-garlic-naan.jpg';
 
 const menuCards = [
   { name: 'Soups', image: menuSoup },
@@ -37,14 +43,20 @@ const menuCards = [
   { name: 'Beverages', image: menuLassi },
 ];
 
-// Biryani and fish stay; the rest are the new gallery photos. Order differs per branch.
+// Original restaurant photos plus a few stock shots. Order differs per branch.
 const baseGalleryItems = [
-  { id: 1, image: tandooriChicken, name: 'Tandoori Chicken' },
-  { id: 2, image: roseSorbet, name: 'Rose Petal Sorbet' },
-  { id: 3, image: lambChops, name: 'Grilled Lamb Chops' },
-  { id: 4, image: gallery4, name: 'Mutton Biryani' },
-  { id: 5, image: kebabPlatter, name: 'Assorted Kebab Platter' },
-  { id: 6, image: gallery5, name: 'Fish Fry' },
+  { id: 1, image: chapliKebabs, name: 'Chapli Kebabs' },
+  { id: 2, image: goatBiryani, name: 'Goat Fry Biryani' },
+  { id: 3, image: gallery4, name: 'Mutton Biryani' },
+  { id: 4, image: tandooriChicken, name: 'Tandoori Chicken' },
+  { id: 5, image: eggBiryani, name: 'Egg Biryani' },
+  { id: 6, image: kebabPlatter, name: 'Assorted Kebab Platter' },
+  { id: 7, image: chickenPakora, name: 'Chicken Pakora' },
+  { id: 8, image: keemaBiryani, name: 'Keema Biryani' },
+  { id: 9, image: gallery5, name: 'Fish Fry' },
+  { id: 10, image: chickenSukka, name: 'Chicken Sukka' },
+  { id: 11, image: lotusRoot, name: 'Lotus Root Manchurian' },
+  { id: 12, image: garlicNaan, name: 'Garlic Naan' },
 ];
 
 // 3 copies: left-buffer | visible | right-buffer — enables seamless infinite wrap
