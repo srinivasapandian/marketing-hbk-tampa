@@ -9,7 +9,7 @@ export const ORDER_URL = "https://house-of-biryanis-and-kebabs-dayton.cloveronli
 export const SOCIAL_LINKS = {
   facebook: "https://www.facebook.com/hbkpiscataway",
   instagram: "https://www.instagram.com/hbkpiscataway",
-  googleReview: "https://www.google.com/maps?cid=10900376006634807616"
+  googleReview: "https://g.page/r/CUChqLE56kWXEBM/review"
 };
 
 // Shown under the logo in the header.
