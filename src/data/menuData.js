@@ -205,6 +205,9 @@ export const menuCategories = [
           { id: 'entrees-25', name: 'Malai Methi Paneer', price: '$13.99', description: 'Paneer in a creamy gravy with fragrant fenugreek leaves.' },
           { id: 'entrees-26', name: 'Kaju Curry', price: '$14.99', description: 'Roasted cashews in a rich, mildly spiced onion-tomato gravy.' },
           { id: 'entrees-27', name: 'Kaju Paneer Curry', price: '$15.29', description: 'Paneer and roasted cashews in a rich, mildly spiced gravy.' },
+          { id: 'entrees-sambar', name: 'Sambar', price: '', description: 'Traditional South Indian lentil and vegetable stew with tamarind and sambar spices.' },
+          { id: 'entrees-rasam', name: 'Rasam', price: '', description: 'Peppery, tangy tamarind and tomato broth tempered with cumin, garlic and curry leaves.' },
+          { id: 'entrees-pachipulusu', name: 'Pachipulusu', price: '', description: 'Andhra-style tangy tamarind stew, served cool and flavored with green chilli and onions.' },
         ],
       },
       {

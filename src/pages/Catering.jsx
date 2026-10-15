@@ -72,17 +72,9 @@ const Catering = () => (
       </div>
     </section>
 
-    {/* Catering enquiry form (same form and SMTP as the contact page) */}
-    <section className="pb-10">
-      <div className="text-center px-6">
-        <Heading eyebrow="Plan your event">Catering Enquiry</Heading>
-      </div>
-      <ContactSection hideHeading />
-    </section>
-
-    {/* Regular menu (no prices) */}
+    {/* Plan your event: regular menu (no prices) */}
     <section id="catering-menu" className="py-20 px-6 max-w-[1200px] mx-auto">
-      <Heading eyebrow="Our regular menu">Catering Menu</Heading>
+      <Heading eyebrow="Plan your event">Catering Menu</Heading>
       <div className="mt-14 columns-1 md:columns-2 lg:columns-3 gap-6">
         {menuCategories.map((category) => (
           <div key={category.name} className="break-inside-avoid mb-6 rounded-[28px] border border-white/10 bg-white/[0.03] p-7">
@@ -107,6 +99,14 @@ const Catering = () => (
         </Link>
       </div>
     </section>
+
+    {/* Contact info + quote request (same form and SMTP as the contact page) */}
+    <ContactSection
+      hideHeading
+      formTitle="Request a Quote"
+      formDescription="Tell us your event date, guest count and menu preferences. We'll put together a customised catering quote and get back to you as soon as possible."
+      messagePlaceholder="Event date, number of guests and menu preferences... *"
+    />
 
     {/* How it works */}
     <section className="py-20 px-6 max-w-[1200px] mx-auto">
