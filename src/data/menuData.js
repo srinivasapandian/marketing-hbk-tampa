@@ -184,6 +184,9 @@ export const menuCategories = [
           { id: 'entrees-23', name: 'Okra Masala Fry', price: '$14.99', description: 'Okra stir-fried with onions and spices until crisp.' },
           { id: 'entrees-24', name: 'Aloo Mutter', price: '$14.99', description: 'Potatoes and green peas in a spiced onion-tomato gravy.' },
           { id: 'entrees-25', name: 'Methi Chaman', price: '$16.99', description: 'Kashmiri-style paneer in a fragrant fenugreek and spinach gravy.' },
+          { id: 'entrees-sambar', name: 'Sambar', price: '', description: 'Traditional South Indian lentil and vegetable stew with tamarind and sambar spices.' },
+          { id: 'entrees-rasam', name: 'Rasam', price: '', description: 'Peppery, tangy tamarind and tomato broth tempered with cumin, garlic and curry leaves.' },
+          { id: 'entrees-pachipulusu', name: 'Pachipulusu', price: '', description: 'Andhra-style tangy tamarind stew, served cool and flavored with green chilli and onions.' },
         ],
       },
       {

@@ -15,7 +15,16 @@ const GOOGLE_MAP_EMBED_URL =
 
 const COUNTRY_CODES = ['+1', '+44', '+91', '+61', '+81', '+86', '+971'];
 
-const ContactSection = ({ mapUrl, hideHeading = false }) => {
+const DEFAULT_FORM_DESCRIPTION =
+  "Have questions about our menu, want to make a reservation, or need catering for your next event? We'd love to hear from you. Send us a message and we'll get back to you as soon as possible.";
+
+const ContactSection = ({
+  mapUrl,
+  hideHeading = false,
+  formTitle = 'Get In Touch',
+  formDescription = DEFAULT_FORM_DESCRIPTION,
+  messagePlaceholder = 'Tell us how we can help you... *',
+}) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -180,12 +189,8 @@ const ContactSection = ({ mapUrl, hideHeading = false }) => {
 
           {/* RIGHT — Contact Form */}
           <div className="contact-section__form-wrapper">
-            <h3 className="contact-section__subtitle">Get In Touch</h3>
-            <p className="contact-section__description">
-              Have questions about our menu, want to make a reservation, or need catering for your
-              next event? We'd love to hear from you. Send us a message and we'll get back to you as
-              soon as possible.
-            </p>
+            <h3 className="contact-section__subtitle">{formTitle}</h3>
+            <p className="contact-section__description">{formDescription}</p>
 
             <form
               ref={formRef}
@@ -289,7 +294,7 @@ const ContactSection = ({ mapUrl, hideHeading = false }) => {
               <textarea
                 className="contact-section__textarea"
                 name="message"
-                placeholder="Tell us how we can help you... *"
+                placeholder={messagePlaceholder}
                 value={formData.message}
                 onChange={handleChange}
                 rows={5}
