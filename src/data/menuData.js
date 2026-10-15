@@ -168,6 +168,9 @@ export const menuCategories = [
           { id: 'entrees-20', name: 'Navaratan Kurma', price: '$13.99', description: 'Vegetables, fruits and nuts in a mild, creamy cashew gravy.' },
           { id: 'entrees-21', name: 'Malai Kofta', price: '$13.99', description: 'Paneer and potato dumplings in a rich, creamy cashew gravy.' },
           { id: 'entrees-22', name: 'Paneer Burjee', price: '$13.99', description: 'Crumbled paneer cooked with onions, tomatoes and spices.' },
+          { id: 'entrees-sambar', name: 'Sambar', price: '', description: 'Traditional South Indian lentil and vegetable stew with tamarind and sambar spices.' },
+          { id: 'entrees-rasam', name: 'Rasam', price: '', description: 'Peppery, tangy tamarind and tomato broth tempered with cumin, garlic and curry leaves.' },
+          { id: 'entrees-pachipulusu', name: 'Pachipulusu', price: '', description: 'Andhra-style tangy tamarind stew, served cool and flavored with green chilli and onions.' },
         ],
       },
       {
