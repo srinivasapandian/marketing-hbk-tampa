@@ -3,6 +3,7 @@ import AppRoutes from './routes';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollToHash from './components/ScrollToHash';
+import ReviewPopup from './components/ReviewPopup';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         </main>
         <Footer />
       </div>
+      <ReviewPopup />
     </Router>
   );
 }

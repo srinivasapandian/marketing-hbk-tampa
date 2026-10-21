@@ -21,9 +21,9 @@ export const menuCategories = [
       {
         name: 'Vegetarian',
         items: [
-          { id: 'appetizers-1', name: 'Veg Spring Rolls (5)', price: '$8.99', description: 'Crisp golden rolls filled with seasoned vegetables, served with a sweet chilli dip.' },
-          { id: 'appetizers-2', name: 'Samosa (3)', price: '$8.99', description: 'Flaky pastry stuffed with spiced potatoes and peas, fried golden and served with chutney.' },
-          { id: 'appetizers-3', name: 'Onion Samosa (6)', price: '$9.99', description: 'Small crisp triangles filled with spiced onions, a classic Hyderabadi tea-time snack.' },
+          { id: 'appetizers-1', name: 'Veg Spring Rolls', price: '$8.99', description: 'Crisp golden rolls filled with seasoned vegetables, served with a sweet chilli dip.' },
+          { id: 'appetizers-2', name: 'Samosa', price: '$8.99', description: 'Flaky pastry stuffed with spiced potatoes and peas, fried golden and served with chutney.' },
+          { id: 'appetizers-3', name: 'Onion Samosa', price: '$9.99', description: 'Small crisp triangles filled with spiced onions, a classic Hyderabadi tea-time snack.' },
           { id: 'appetizers-4', name: 'Cut Mirchi', price: '$10.99', description: 'Stuffed green chilli fritters, fried, cut and fried again, topped with onions and lemon.' },
           { id: 'appetizers-5', name: 'Samosa Chaat', price: '$11.99', description: 'Crushed samosas topped with chickpea curry, yogurt, tamarind and mint chutneys.' },
           { id: 'appetizers-6', name: 'Onion Pakora', price: '$12.99', description: 'Crispy onion fritters in a spiced gram flour batter.' },
