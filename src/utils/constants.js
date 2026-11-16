@@ -4,7 +4,7 @@ export const SECONDARY_COLOR = "#000000"; // Black
 export const ACCENT_COLOR = "#FFFFFF"; // White
 
 // Online ordering is served by Clover.
-export const ORDER_URL = "https://house-of-biryanis-kebabs-malvern-malvern.cloveronline.com/menu/all";
+export const ORDER_URL = "https://house-of-biryani-kebab-malvern.cloveronline.com/menu/all";
 
 export const SOCIAL_LINKS = {
   facebook: "https://www.facebook.com/hbkmalvern",
